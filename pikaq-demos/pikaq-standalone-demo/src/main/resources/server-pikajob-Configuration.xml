@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <!-- connection factory -->
+    <bean id="connectionFactory"
+          class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
+        <constructor-arg value="127.0.0.1"/>
+        <property name="username" value="guest"/>
+        <property name="password" value="guest"/>
+        <property name="channelCacheSize" value="25"/>
+    </bean>
+
+    <!-- admin -->
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- message convert -->
+    <bean id="jsonConverterWithDefaultType"
+          class="org.springframework.amqp.support.converter.JsonMessageConverter">
+    </bean>
+
+    <!-- queue -->
+    <rabbit:queue id="logMessageQueue" name="pikajobQ"/>
+
+    <!-- listener container -->
+    <listener-container concurrency="5" connection-factory="connectionFactory"
+                        message-converter="jsonConverterWithDefaultType"
+                        xmlns="http://www.springframework.org/schema/rabbit">
+        <listener ref="serverHandler" method="handleMessage" queues="logMessageQueue"/>
+    </listener-container>
+
+    <!-- exchange -->
+    <rabbit:topic-exchange name="pikajobExchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="logMessageQueue" pattern="logMessageInfo.*"/>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <!-- service -->
+    <bean name="serverHandler" class="com.baidu.pikajob.origin.server.service.ServerHandler">
+    </bean>
+
+</beans>

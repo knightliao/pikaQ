@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!--
-  ~ Copyright (C) 2015 Baidu, Inc. All Rights Reserved.
-  -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
        xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
@@ -22,7 +19,8 @@
           class="org.springframework.amqp.support.converter.JsonMessageConverter">
     </bean>
 
-    <rabbit:template id="template" message-converter="jsonConverterWithDefaultType" connection-factory="connectionFactory" retry-template="retryTemplate"/>
+    <rabbit:template id="template" message-converter="jsonConverterWithDefaultType"
+                     connection-factory="connectionFactory" retry-template="retryTemplate"/>
     <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
         <property name="backOffPolicy">
             <bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">

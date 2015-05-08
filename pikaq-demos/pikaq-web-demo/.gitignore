@@ -1,2 +1,5 @@
 pikajob-web-demo.iml
 /target
+/.project
+/.classpath
+/.settings

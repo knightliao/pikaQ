@@ -1,4 +1,4 @@
-package com.baidu.pikajob.origin.server.service;
+package com.baidu.pikaq.origin.consumer.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.util.StringUtils;
 
-import com.baidu.pikajob.origin.common.TradeRequest;
-import com.baidu.pikajob.origin.common.TradeResponse;
+import com.baidu.pikaq.origin.common.TradeRequest;
+import com.baidu.pikaq.origin.common.TradeResponse;
 
 /**
  * Created by knightliao on 15/3/3.

@@ -9,8 +9,8 @@
     <bean id="connectionFactory"
           class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
         <constructor-arg value="127.0.0.1"/>
-        <property name="username" value="guest"/>
-        <property name="password" value="guest"/>
+        <property name="username" value="root"/>
+        <property name="password" value="MhxzKhl"/>
         <property name="channelCacheSize" value="25"/>
     </bean>
 
@@ -22,25 +22,25 @@
           class="org.springframework.amqp.support.converter.JsonMessageConverter">
     </bean>
 
+    <!-- consumer service -->
+    <bean name="serverHandler" class="com.baidu.pikaq.origin.consumer.service.ServerHandler">
+    </bean>
+
     <!-- queue -->
-    <rabbit:queue id="logMessageQueue" name="pikajobQ"/>
+    <rabbit:queue id="pikaQDemoLogMessageQueue" name="pikaQDemo"/>
 
     <!-- listener container -->
     <listener-container concurrency="5" connection-factory="connectionFactory"
                         message-converter="jsonConverterWithDefaultType"
                         xmlns="http://www.springframework.org/schema/rabbit">
-        <listener ref="serverHandler" method="handleMessage" queues="logMessageQueue"/>
+        <listener ref="serverHandler" method="handleMessage" queues="pikaQDemoLogMessageQueue"/>
     </listener-container>
 
     <!-- exchange -->
-    <rabbit:topic-exchange name="pikajobExchange">
+    <rabbit:topic-exchange name="pikaQDemoExchange">
         <rabbit:bindings>
-            <rabbit:binding queue="logMessageQueue" pattern="logMessageInfo.*"/>
+            <rabbit:binding queue="pikaQDemoLogMessageQueue" pattern="logMessageInfo.*"/>
         </rabbit:bindings>
     </rabbit:topic-exchange>
-
-    <!-- service -->
-    <bean name="serverHandler" class="com.baidu.pikajob.origin.server.service.ServerHandler">
-    </bean>
 
 </beans>

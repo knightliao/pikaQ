@@ -1,4 +1,4 @@
-package com.baidu.pikajob.origin.common;
+package com.baidu.pikaq.origin.common;
 
 import java.math.BigDecimal;
 import java.util.Date;

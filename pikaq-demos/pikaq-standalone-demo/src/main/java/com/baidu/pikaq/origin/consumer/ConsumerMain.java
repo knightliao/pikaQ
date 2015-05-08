@@ -1,4 +1,4 @@
-package com.baidu.pikajob.origin.server;
+package com.baidu.pikaq.origin.server;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -8,9 +8,9 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  *
  * @author Mark Pollack
  */
-public class ServerMain {
+public class ConsumerMain {
 
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("server-pikajob-Configuration.xml");
+        ApplicationContext context = new ClassPathXmlApplicationContext("consumer-pikajob-Configuration.xml");
     }
 }

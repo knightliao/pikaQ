@@ -13,6 +13,14 @@ public class ProducerMain {
     public void run() {
         context = new ClassPathXmlApplicationContext("producer-pikaq-Configuration.xml");
 
+        ProducerSender producerSender = (ProducerSender) context.getBean("producerSender", ProducerSender.class);
+
+        for (int i = 0; i < 100000; ++i) {
+            producerSender.send(i);
+        }
+
+        context.close();
+
     }
 
     public static void main(String[] args) {

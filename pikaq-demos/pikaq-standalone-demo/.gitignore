@@ -1,2 +1,5 @@
 pikajob-standalone-demo.iml
 /target
+/.project
+/.classpath
+/.settings

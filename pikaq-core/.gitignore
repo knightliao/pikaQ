@@ -1,2 +1,5 @@
 pikajob-core.iml
 /target
+/.project
+/.classpath
+/.settings

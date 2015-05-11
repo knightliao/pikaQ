@@ -1,2 +1,5 @@
 pikajob-client.iml
 /target
+/.project
+/.classpath
+/.settings

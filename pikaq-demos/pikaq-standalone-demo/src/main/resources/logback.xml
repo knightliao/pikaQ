@@ -2,7 +2,7 @@
 
 <configuration>
 
-    <property name="log.base" value="./log/jsonrpc-server-demo"/>
+    <property name="log.base" value="./log/pikaq-standalone-demo"/>
 
     <jmxConfigurator/>
 

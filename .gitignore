@@ -1,6 +1,6 @@
 /.idea
 docs
-/target
+/.idea
 /.project
 /.classpath
 /.settings

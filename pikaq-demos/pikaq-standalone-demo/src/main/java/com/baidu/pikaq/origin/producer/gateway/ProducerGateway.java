@@ -1,6 +1,5 @@
 package com.baidu.pikaq.origin.producer.gateway;
 
-import java.io.UnsupportedEncodingException;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -9,6 +8,7 @@ import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.support.RabbitGatewaySupport;
+import org.springframework.stereotype.Service;
 
 import com.baidu.pikaq.origin.common.Constants;
 import com.baidu.pikaq.origin.common.OrderServiceGateway;

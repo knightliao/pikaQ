@@ -15,7 +15,11 @@ public class ProducerMain {
 
         ProducerSender producerSender = (ProducerSender) context.getBean("producerSender", ProducerSender.class);
 
-        for (int i = 0; i < 100000; ++i) {
+        for (int i = 0; i < 10000; ++i) {
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+            }
             producerSender.send(i);
         }
 

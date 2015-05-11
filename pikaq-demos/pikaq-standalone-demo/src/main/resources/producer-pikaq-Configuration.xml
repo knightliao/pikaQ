@@ -58,4 +58,8 @@
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 
+    <!-- consumer service -->
+    <bean name="producerSender" class="com.baidu.pikaq.origin.producer.ProducerSender">
+    </bean>
+
 </beans>

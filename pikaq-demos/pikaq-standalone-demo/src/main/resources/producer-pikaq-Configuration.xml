@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <!-- connection factory -->
+    <!-- config for connection factory-->
     <bean id="connectionFactory"
           class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
         <constructor-arg value="127.0.0.1"/>
@@ -14,27 +14,29 @@
         <property name="channelCacheSize" value="25"/>
     </bean>
 
-    <!-- admin -->
+    <!-- config for broker-->
     <rabbit:admin connection-factory="connectionFactory"/>
 
-    <!-- message convert -->
+    <!-- convert: json-->
     <bean id="jsonConverterWithDefaultType"
           class="org.springframework.amqp.support.converter.JsonMessageConverter">
     </bean>
 
-    <!-- consumer service -->
-    <bean name="serverHandler" class="com.baidu.pikaq.origin.consumer.service.ServerHandler">
+    <!-- message sender -->
+    <rabbit:template id="template" message-converter="jsonConverterWithDefaultType"
+                     connection-factory="connectionFactory" retry-template="retryTemplate"/>
+    <bean id="retryTemplate" class="org.springframework.retry.support.RetryTemplate">
+        <property name="backOffPolicy">
+            <bean class="org.springframework.retry.backoff.ExponentialBackOffPolicy">
+                <property name="initialInterval" value="500"/>
+                <property name="multiplier" value="10.0"/>
+                <property name="maxInterval" value="10000"/>
+            </bean>
+        </property>
     </bean>
 
     <!-- queue -->
-    <rabbit:queue id="pikaQDemoLogMessageQueue" name="pikaQDemo"/>
-
-    <!-- listener container -->
-    <listener-container concurrency="5" connection-factory="connectionFactory"
-                        message-converter="jsonConverterWithDefaultType"
-                        xmlns="http://www.springframework.org/schema/rabbit">
-        <listener ref="serverHandler" method="handleMessage" queues="pikaQDemoLogMessageQueue"/>
-    </listener-container>
+    <rabbit:queue id="pikaQDemoLogMessageQueue" name="pikaQDemoQueue"/>
 
     <!-- exchange -->
     <rabbit:topic-exchange name="pikaQDemoExchange">

@@ -11,7 +11,7 @@ import com.baidu.pikaq.origin.common.TradeRequest;
 import com.baidu.pikaq.origin.common.TradeResponse;
 
 /**
- * Created by knightliao on 15/3/3.
+ *
  */
 public class ServerHandler {
 

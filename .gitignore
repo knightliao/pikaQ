@@ -1,2 +1,6 @@
 /.idea
 docs
+/target
+/.project
+/.classpath
+/.settings

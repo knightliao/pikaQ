@@ -8,7 +8,7 @@ import org.springframework.amqp.AmqpException;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.support.RabbitGatewaySupport;
-import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.baidu.pikaq.origin.common.Constants;
 import com.baidu.pikaq.origin.common.OrderServiceGateway;
@@ -28,6 +28,7 @@ public class ProducerGateway extends RabbitGatewaySupport implements OrderServic
      *
      * @param tradeRequest
      */
+    @Transactional
     @Override
     public void send(final TradeRequest tradeRequest) {
 

@@ -1,4 +1,4 @@
-package com.baidu.pikaq.origin.common;
+package com.baidu.pikaq.demo.origin.common;
 
 /**
  * Gateway interface that sends trades to an external process.

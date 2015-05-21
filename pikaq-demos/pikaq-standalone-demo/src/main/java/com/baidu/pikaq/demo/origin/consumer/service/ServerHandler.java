@@ -1,9 +1,9 @@
-package com.baidu.pikaq.origin.consumer.service;
+package com.baidu.pikaq.demo.origin.consumer.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.baidu.pikaq.origin.common.TradeRequest;
+import com.baidu.pikaq.demo.origin.common.TradeRequest;
 
 /**
  *
@@ -16,5 +16,4 @@ public class ServerHandler {
 
         LOG.info("receive: " + tradeRequest.toString());
     }
-
 }

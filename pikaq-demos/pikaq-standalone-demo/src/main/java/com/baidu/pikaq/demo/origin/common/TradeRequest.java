@@ -1,4 +1,4 @@
-package com.baidu.pikaq.origin.common;
+package com.baidu.pikaq.demo.origin.common;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -8,9 +8,14 @@ import java.util.UUID;
  */
 public class TradeRequest {
 
+    public TradeRequest(BigDecimal price, String orderId) {
+        this.price = price;
+        this.orderId = orderId;
+    }
+
     /*
-        价格
-     */
+                价格
+             */
     private BigDecimal price;
 
     /**

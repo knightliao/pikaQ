@@ -1,18 +1,16 @@
-package com.baidu.pikaq.origin.producer;
+package com.baidu.pikaq.demo.origin.producer;
 
 import java.math.BigDecimal;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import com.baidu.pikaq.origin.common.OrderServiceGateway;
-import com.baidu.pikaq.origin.common.TradeRequest;
+import com.baidu.pikaq.demo.origin.common.OrderServiceGateway;
+import com.baidu.pikaq.demo.origin.common.TradeRequest;
 
 /**
  * Created by knightliao on 15/5/11.
  */
-@Service
 public class ProducerSender {
 
     @Autowired
@@ -25,10 +23,7 @@ public class ProducerSender {
      */
     public void send(Integer orderId) {
 
-        TradeRequest tr = new TradeRequest();
-
-        tr.setOrderId(String.valueOf(orderId));
-        tr.setPrice(BigDecimal.valueOf(RandomUtils.nextInt(10000)));
+        TradeRequest tr = new TradeRequest(BigDecimal.valueOf(RandomUtils.nextInt(10000)), String.valueOf(orderId));
 
         orderServiceGateway.send(tr);
     }

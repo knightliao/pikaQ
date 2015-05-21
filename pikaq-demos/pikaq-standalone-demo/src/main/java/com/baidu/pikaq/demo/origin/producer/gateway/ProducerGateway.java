@@ -1,4 +1,4 @@
-package com.baidu.pikaq.origin.producer.gateway;
+package com.baidu.pikaq.demo.origin.producer.gateway;
 
 import java.util.UUID;
 
@@ -10,9 +10,9 @@ import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.support.RabbitGatewaySupport;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baidu.pikaq.origin.common.Constants;
-import com.baidu.pikaq.origin.common.OrderServiceGateway;
-import com.baidu.pikaq.origin.common.TradeRequest;
+import com.baidu.pikaq.demo.origin.common.Constants;
+import com.baidu.pikaq.demo.origin.common.OrderServiceGateway;
+import com.baidu.pikaq.demo.origin.common.TradeRequest;
 
 /**
  * 发送网关

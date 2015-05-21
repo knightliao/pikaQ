@@ -1,4 +1,4 @@
-package com.baidu.pikaq.origin.consumer;
+package com.baidu.pikaq.demo.origin.consumer;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

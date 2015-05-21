@@ -54,12 +54,12 @@
 
     <!-- message sender gateway-->
     <bean id="stockServiceGateway"
-          class="com.baidu.pikaq.origin.producer.gateway.ProducerGateway">
+          class="com.baidu.pikaq.demo.origin.producer.gateway.ProducerGateway">
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 
     <!-- consumer service -->
-    <bean name="producerSender" class="com.baidu.pikaq.origin.producer.ProducerSender">
+    <bean name="producerSender" class="com.baidu.pikaq.demo.origin.producer.ProducerSender">
     </bean>
 
 </beans>

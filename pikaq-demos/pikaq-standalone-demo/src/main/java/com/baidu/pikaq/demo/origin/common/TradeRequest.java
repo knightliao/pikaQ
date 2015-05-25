@@ -13,9 +13,9 @@ public class TradeRequest {
         this.orderId = orderId;
     }
 
-    /*
-                价格
-             */
+    /**
+     * 价格
+     */
     private BigDecimal price;
 
     /**

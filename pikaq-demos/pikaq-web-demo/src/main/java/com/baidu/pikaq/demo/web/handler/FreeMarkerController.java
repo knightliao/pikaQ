@@ -1,4 +1,4 @@
-package com.baidu.pika.demo.web.handler;
+package com.baidu.pikaq.demo.web.handler;
 
 import java.util.ArrayList;
 import java.util.List;

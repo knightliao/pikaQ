@@ -8,9 +8,9 @@ import java.util.UUID;
  */
 public class TradeRequest {
 
-    public TradeRequest(BigDecimal price, String orderId) {
+    public TradeRequest(BigDecimal price, String campaignId) {
         this.price = price;
-        this.orderId = orderId;
+        this.campaignId = campaignId;
     }
 
     /**
@@ -21,7 +21,7 @@ public class TradeRequest {
     /**
      * 订单ID
      */
-    private String orderId;
+    private String campaignId;
 
     /**
      * 唯一ID
@@ -36,12 +36,12 @@ public class TradeRequest {
         this.price = price;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public String getCampaignId() {
+        return campaignId;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public void setCampaignId(String campaignId) {
+        this.campaignId = campaignId;
     }
 
     public String getId() {
@@ -56,7 +56,7 @@ public class TradeRequest {
     public String toString() {
         return "TradeRequest{" +
                    "price=" + price +
-                   ", orderId='" + orderId + '\'' +
+                   ", campaignId='" + campaignId + '\'' +
                    ", id='" + id + '\'' +
                    '}';
     }

@@ -1,0 +1,8 @@
+CREATE TABLE `campaign` (
+	`campaignId` BIGINT(20) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(256) NULL DEFAULT NULL,
+	`price` DECIMAL(10,0) NULL DEFAULT NULL,
+	PRIMARY KEY (`campaignId`)
+)
+ENGINE=InnoDB
+;

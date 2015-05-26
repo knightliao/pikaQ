@@ -4,9 +4,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
              http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 配置freeMarker的模板路径 -->
+    <!-- 配置FreeMarkerConfigurer -->
     <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
         <property name="templateLoaderPath" value="/WEB-INF/freemarker/"/>
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop>
+            </props>
+        </property>
     </bean>
 
     <!--
@@ -20,6 +25,7 @@
         <property name="contentType" value="text/html;charset=UTF-8"/>
         <!-- 此变量值为pageContext.request, 页面使用方法：rc.contextPath -->
         <property name="requestContextAttribute" value="rc"/>
+        <property name="cache" value="false"/>
     </bean>
 
     <!-- Convenient subclass of UrlBasedViewResolver that supports InternalResourceView
@@ -40,7 +46,7 @@
     <mvc:view-controller path="/" view-name="index_jsp"/>
 
     <mvc:default-servlet-handler/>
-    <mvc:resources mapping="/**.html" location="/WEB-INF/static/"/>
+    <mvc:resources mapping="/**.html" location="/WEB-INF/static/" cache-period="0"/>
     <mvc:resources mapping="/static/css/**" location="/WEB-INF/static/css/"/>
     <mvc:resources mapping="/static/js/**" location="/WEB-INF/static/js/"/>
     <mvc:resources mapping="/static/img/**" location="/WEB-INF/static/img/"/>

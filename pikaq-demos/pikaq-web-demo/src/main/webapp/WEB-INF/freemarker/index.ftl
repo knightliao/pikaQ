@@ -2,16 +2,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>campaign list</title>
 </head>
 <body>
-<#list users as user>
-username : ${user.username}<br/>
-password : ${user.password}
-ddxxs比dddd sdd ss寺f  寺 经费dd  <sss></sss> ddddd
 
-xxx
-xxx
+<#list campaignList as campaign>
+campaignId : ${campaign.id}<br/>
+name : ${campaign.name}<br/>
+price : ${campaign.price}<br/><br/>
 </#list>
+
 </body>
 </html>

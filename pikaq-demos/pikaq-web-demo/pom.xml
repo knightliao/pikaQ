@@ -128,12 +128,6 @@
             <version>${spring.version}</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.github.knightliao.apollo</groupId>
-            <artifactId>apollo</artifactId>
-            <version>1.0.7</version>
-        </dependency>
-
         <!-- other dependencies -->
 
         <dependency>

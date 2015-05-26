@@ -8,7 +8,6 @@
         http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     <description>database数据源配置</description>
 
-
     <!-- 数据库连接池 -->
     <bean id="onedbDataSource" abstract="true"
           class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
@@ -42,8 +41,8 @@
         </property>
     </bean>
 
-    <!-- 第0个数据库标识 -->
-    <bean id="vdb_one"
+    <!-- 第0个虚拟数据库 -->
+    <bean id="vdb_one_0"
           class="com.baidu.ub.common.dbmanage.datasource.VirtualDataSource">
         <property name="masterSet">
             <list>
@@ -53,13 +52,13 @@
         <property name="loadbalance" value="1"/>
     </bean>
 
-    <!-- 分库的策略 -->
+    <!-- 分库的策略：根据用户ID判断当前应该查询哪个库 -->
     <bean id="onedbShardingRule"
           class="com.baidu.ub.common.dbmanage.rule.SimpleDBShardingRuleImpl">
         <property name="shardingNum" value="1"/>
     </bean>
 
-    <!-- 分库router -->
+    <!-- 分库router: 根据用户ID判断当前应该查询哪个虚拟库  -->
     <bean id="onedbRouter" class="com.baidu.ub.common.dbmanage.router.IDRouter">
         <property name="prefix" value="vdb_one"/>
         <property name="dbShardingRule">
@@ -67,7 +66,7 @@
         </property>
     </bean>
 
-    <!-- 多库 -->
+    <!-- 多库Context -->
     <bean id="onedbMultiDSKeyContext"
           class="com.baidu.ub.common.dbmanage.datasource.MultiDataSourceKeyContext">
         <property name="router">
@@ -92,7 +91,6 @@
     <bean id="onedbJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
         <property name="dataSource" ref="onedbMultiDataSource"/>
     </bean>
-    <!-- onedb configure end -->
 
 
     <!-- Transaction config -->

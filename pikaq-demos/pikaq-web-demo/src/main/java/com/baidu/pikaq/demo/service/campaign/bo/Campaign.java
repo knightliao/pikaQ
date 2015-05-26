@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 
 import com.baidu.pikaq.demo.service.Columns;
 import com.baidu.pikaq.demo.service.DB;
+import com.baidu.ub.common.commons.BaseObject;
 import com.baidu.unbiz.common.genericdao.annotation.Column;
 import com.baidu.unbiz.common.genericdao.annotation.Table;
-import com.github.knightliao.apollo.db.bo.BaseObject;
 
 /**
  *
@@ -31,12 +31,6 @@ public class Campaign extends BaseObject<Long> {
     private BigDecimal price;
 
     /**
-     * 订单ID
-     */
-    @Column(value = Columns.CAMPAIGN_ID)
-    private String campaignId;
-
-    /**
      * 订单名称
      */
     @Column(value = Columns.NAME)
@@ -50,14 +44,6 @@ public class Campaign extends BaseObject<Long> {
         this.price = price;
     }
 
-    public String getCampaignId() {
-        return campaignId;
-    }
-
-    public void setCampaignId(String campaignId) {
-        this.campaignId = campaignId;
-    }
-
     public String getName() {
         return name;
     }
@@ -65,4 +51,6 @@ public class Campaign extends BaseObject<Long> {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

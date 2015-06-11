@@ -14,6 +14,6 @@ public class ServerHandler {
 
     public void handleMessage(TradeRequest tradeRequest) {
 
-        LOG.info("receive: " + tradeRequest.toString());
+        //LOG.info("receive: " + tradeRequest.toString());
     }
 }

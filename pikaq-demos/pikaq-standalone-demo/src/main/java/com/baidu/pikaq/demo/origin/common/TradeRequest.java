@@ -8,9 +8,26 @@ import java.util.UUID;
  */
 public class TradeRequest {
 
-    public TradeRequest(BigDecimal price, String campaignId) {
+    public TradeRequest() {
+
+    }
+
+    public static TradeRequest make_data(BigDecimal price, String campaignId) {
+        return new TradeRequest(price, campaignId, UUID.randomUUID().toString());
+    }
+
+    /**
+     * 工厂模式
+     *
+     * @param price
+     * @param campaignId
+     *
+     * @return
+     */
+    public TradeRequest(BigDecimal price, String campaignId, String id) {
         this.price = price;
         this.campaignId = campaignId;
+        this.id = id;
     }
 
     /**
@@ -26,7 +43,16 @@ public class TradeRequest {
     /**
      * 唯一ID
      */
-    private String id = UUID.randomUUID().toString();
+    private String id;
+
+    @Override
+    public String toString() {
+        return "TradeRequest{" +
+                   "price=" + price +
+                   ", campaignId='" + campaignId + '\'' +
+                   ", id='" + id + '\'' +
+                   '}';
+    }
 
     public BigDecimal getPrice() {
         return price;
@@ -50,14 +76,5 @@ public class TradeRequest {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "TradeRequest{" +
-                   "price=" + price +
-                   ", campaignId='" + campaignId + '\'' +
-                   ", id='" + id + '\'' +
-                   '}';
     }
 }

@@ -23,7 +23,10 @@ public class ProducerSender {
      */
     public void send(Integer orderId) {
 
-        TradeRequest tr = new TradeRequest(BigDecimal.valueOf(RandomUtils.nextInt(10000)), String.valueOf(orderId));
+        TradeRequest tr =
+            TradeRequest.make_data(BigDecimal.valueOf(RandomUtils.nextInt(10000)), String.valueOf(orderId));
+
+        //System.out.println(tr.toString().getBytes().length);
 
         orderServiceGateway.send(tr);
     }

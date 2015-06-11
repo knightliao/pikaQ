@@ -41,7 +41,7 @@ public class ProducerGateway extends RabbitGatewaySupport implements OrderServic
                 try {
 
                     message.getMessageProperties().setCorrelationId(UUID.randomUUID().toString().getBytes("UTF-8"));
-                    LOGGER.info("send: " + tradeRequest.toString());
+                    //LOGGER.info("send: " + tradeRequest.toString());
 
                 } catch (Exception e) {
                     throw new AmqpException(e);

@@ -30,8 +30,8 @@
           class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
         <constructor-arg value="${host}"/>
         <constructor-arg value="${port}"/>
-        <property name="username" value="root"/>
-        <property name="password" value="MhxzKhl"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
         <property name="channelCacheSize" value="25"/>
     </bean>
 

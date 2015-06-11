@@ -12,12 +12,26 @@
 
     <context:component-scan base-package="com.baidu"/>
 
+    <bean id="propertyConfigurerForProject1"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:/mq.properties</value>
+            </list>
+        </property>
+    </bean>
+
     <!-- config for connection factory-->
     <bean id="connectionFactory"
           class="org.springframework.amqp.rabbit.connection.CachingConnectionFactory">
-        <constructor-arg value="127.0.0.1"/>
-        <property name="username" value="pikaq"/>
-        <property name="password" value="pikaq"/>
+        <constructor-arg value="${host}"/>
+        <constructor-arg value="${port}"/>
+        <property name="username" value="root"/>
+        <property name="password" value="MhxzKhl"/>
         <property name="channelCacheSize" value="25"/>
     </bean>
 

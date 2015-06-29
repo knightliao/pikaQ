@@ -17,7 +17,7 @@ import org.springframework.transaction.support.TransactionSynchronizationManager
 public class CommitExecutorBaseImpl extends TransactionSynchronizationAdapter implements CommitExecutor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CommitExecutorBaseImpl.class);
-    protected static final ThreadLocal<List<Runnable>> RUNNABLES = new ThreadLocal<List<Runnable>>();
+    protected final ThreadLocal<List<Runnable>> RUNNABLES = new ThreadLocal<List<Runnable>>();
 
     /**
      * 注册到事务处理器
@@ -27,7 +27,7 @@ public class CommitExecutorBaseImpl extends TransactionSynchronizationAdapter im
     @Override
     public void execute(Runnable runnable) {
 
-        LOGGER.debug("Submitting new runnable {} to run after commit", runnable);
+        LOGGER.debug("Submitting new runnable {} to run around commit", runnable);
 
         if (!TransactionSynchronizationManager.isSynchronizationActive()) {
             LOGGER.debug("Transaction synchronization is NOT ACTIVE. Executing right now runnable {}", runnable);

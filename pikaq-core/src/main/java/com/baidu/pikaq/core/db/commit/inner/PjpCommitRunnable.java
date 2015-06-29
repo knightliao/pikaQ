@@ -31,6 +31,6 @@ public class PjpCommitRunnable implements Runnable {
     public String toString() {
         String typeName = pjp.getTarget().getClass().getSimpleName();
         String methodName = pjp.getSignature().getName();
-        return "PjpAfterCommitRunnable[type=" + typeName + ", method=" + methodName + "]";
+        return "PjpCommitRunnable[type=" + typeName + ", method=" + methodName + "]";
     }
 }

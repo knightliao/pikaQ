@@ -1,4 +1,4 @@
-pikajob-client.iml
+*.iml
 /target
 /.project
 /.classpath

@@ -1,0 +1,33 @@
+package com.baidu.pikaq.demo.service.campaign.dao.impl;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.baidu.pikaq.demo.service.AbstractDao;
+import com.baidu.pikaq.demo.service.campaign.bo.PikaData;
+import com.baidu.pikaq.demo.service.campaign.dao.PikaDataDao;
+
+/**
+ * Created by knightliao on 15/7/2.
+ */
+@Service
+public class PikaDataDaoImpl extends AbstractDao<Long, PikaData> implements PikaDataDao {
+
+    /**
+     * @param correlation
+     * @param data
+     */
+    @Override
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+    public void saveData(String correlation, String data) {
+
+        PikaData pikaData = new PikaData();
+
+        pikaData.setCorrelation(correlation);
+        pikaData.setCurrentCreateTime();
+        pikaData.setData(data);
+
+        this.create(pikaData);
+    }
+}

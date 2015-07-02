@@ -24,6 +24,12 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.baidu.pikaq</groupId>
+            <artifactId>pikaq-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- spring dependencies -->
 
         <dependency>

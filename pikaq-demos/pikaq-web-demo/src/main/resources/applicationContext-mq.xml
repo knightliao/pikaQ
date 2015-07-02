@@ -2,28 +2,11 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:rabbit="http://www.springframework.org/schema/rabbit"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/rabbit
         http://www.springframework.org/schema/rabbit/spring-rabbit.xsd
 	    http://www.springframework.org/schema/beans
-	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <context:component-scan base-package="com.baidu"/>
-
-    <bean id="propertyConfigurerForProject1"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="order" value="1"/>
-        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
-        <property name="ignoreResourceNotFound" value="true"/>
-        <property name="ignoreUnresolvablePlaceholders" value="true"/>
-        <property name="locations">
-            <list>
-                <value>classpath*:/mq.properties</value>
-            </list>
-        </property>
-    </bean>
 
     <!-- config for connection factory-->
     <bean id="connectionFactory"
@@ -56,24 +39,10 @@
         </property>
     </bean>
 
-    <!-- queue -->
-    <rabbit:queue id="pikaQDemoLogMessageQueue" name="pikaQDemoQueue"/>
-
-    <!-- exchange -->
-    <rabbit:topic-exchange name="pikaQDemoExchange">
-        <rabbit:bindings>
-            <rabbit:binding queue="pikaQDemoLogMessageQueue" pattern="logMessageInfo.*"/>
-        </rabbit:bindings>
-    </rabbit:topic-exchange>
-
     <!-- message sender gateway-->
     <bean id="orderServiceGateway"
-          class="com.baidu.pikaq.demo.origin.producer.gateway.ProducerGateway">
+          class="com.baidu.pikaq.demo.service.message.producer.gateway.ProducerGateway">
         <property name="rabbitTemplate" ref="template"/>
-    </bean>
-
-    <!-- consumer service -->
-    <bean name="producerSender" class="com.baidu.pikaq.demo.origin.producer.ProducerSender">
     </bean>
 
 </beans>

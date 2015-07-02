@@ -14,6 +14,7 @@
         <java.version>1.6</java.version>
         <encoding>UTF-8</encoding>
         <spring.version>3.1.2.RELEASE</spring.version>
+        <spring.amqp.version>1.4.5.RELEASE</spring.amqp.version>
         <servlet.version>2.5</servlet.version>
         <cglib.version>2.2.2</cglib.version>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
@@ -28,6 +29,51 @@
             <groupId>com.baidu.pikaq</groupId>
             <artifactId>pikaq-core</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- rabbit dependencies -->
+
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-amqp</artifactId>
+            <version>${spring.amqp.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.amqp</groupId>
+            <artifactId>spring-rabbit</artifactId>
+            <version>${spring.amqp.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-messaging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-tx</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework</groupId>
+                    <artifactId>spring-context</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-mapper-asl</artifactId>
+            <version>1.9.13</version>
+            <scope>runtime</scope>
         </dependency>
 
         <!-- spring dependencies -->

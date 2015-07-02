@@ -31,7 +31,6 @@ public class PikaAspect {
     // 提交前设置
     private CommitExecutor beforeCommitExecutor = CommitExecutorFactory.getBeforeCommitDefaultImpl();
 
-
     @Around(value = "@annotation(com.baidu.pikaq.client.PikaQ)", argNames = "pjp")
     public Object aroundAdvice(final ProceedingJoinPoint pjp) {
 
@@ -41,8 +40,6 @@ public class PikaAspect {
 
         // save data before commit
         if (data instanceof String && correlation instanceof String) {
-
-            // email will be sent after commit, programmatic way
             beforeCommitExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
@@ -56,6 +53,16 @@ public class PikaAspect {
         ThreadContext.remove(PIKAQ_DATA_CORRELATION_KEY);
 
         return null;
+    }
+
+    /**
+     * 发送Q消息
+     *
+     * @param correlation
+     * @param data
+     */
+    private void sendQ(String correlation, String data) {
+
     }
 
 }

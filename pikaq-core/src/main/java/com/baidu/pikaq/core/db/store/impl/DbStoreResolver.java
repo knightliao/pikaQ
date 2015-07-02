@@ -32,8 +32,5 @@ public class DbStoreResolver implements StoreResolver {
                 LOGGER.debug("correlation is null");
             }
         }
-
-
-
     }
 }

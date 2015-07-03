@@ -1,5 +1,6 @@
 package com.baidu.pikaq.demo.service.campaign.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
@@ -20,5 +21,10 @@ public interface CampaignMgr {
      * @return
      */
     List<Campaign> findAll();
+
+    /**
+     * @return
+     */
+    Campaign create(String name, BigDecimal price);
 
 }

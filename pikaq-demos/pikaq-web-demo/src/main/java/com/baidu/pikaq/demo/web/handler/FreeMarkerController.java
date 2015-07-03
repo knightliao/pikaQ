@@ -1,10 +1,12 @@
 package com.baidu.pikaq.demo.web.handler;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,18 @@ public class FreeMarkerController {
 
     @RequestMapping("/index")
     public ModelAndView Add(HttpServletRequest request, HttpServletResponse response) {
+
+        List<Campaign> campaignList = campaignMgr.findAll();
+
+        return new ModelAndView("index", "campaignList", campaignList);
+    }
+
+    @RequestMapping("/sendCampaignMessage")
+    public ModelAndView AddCampaignMessage(HttpServletRequest request, HttpServletResponse response) {
+
+        long aa = RandomUtils.nextInt(10000000);
+
+        campaignMgr.create("campaign" + String.valueOf(aa), BigDecimal.valueOf(aa));
 
         List<Campaign> campaignList = campaignMgr.findAll();
 

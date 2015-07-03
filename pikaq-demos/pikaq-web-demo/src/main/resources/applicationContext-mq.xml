@@ -40,8 +40,7 @@
     </bean>
 
     <!-- message sender gateway-->
-    <bean id="orderServiceGateway"
-          class="com.baidu.pikaq.demo.service.message.producer.gateway.ProducerGateway">
+    <bean class="com.baidu.pikaq.client.gateway.impl.PikaQGatewayDefaultImpl">
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 

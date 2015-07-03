@@ -1,5 +1,6 @@
 package com.baidu.pikaq.demo.service.campaign.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -24,5 +25,13 @@ public interface CampaignDao extends BaseDao<Long, Campaign> {
      * @return
      */
     List<Campaign> getByIds(Set<Long> ids);
+
+    /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    Campaign create(String name, BigDecimal price);
 
 }

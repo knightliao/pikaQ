@@ -1,5 +1,6 @@
 package com.baidu.pikaq.demo.service.campaign.dao.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -32,6 +33,22 @@ public class CampaignDaoImpl extends AbstractDao<Long, Campaign> implements Camp
         }
 
         return find(match(Columns.CAMPAIGN_ID, ids));
+    }
+
+    /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    @Override
+    public Campaign create(String name, BigDecimal price) {
+
+        Campaign campaign = new Campaign();
+        campaign.setPrice(price);
+        campaign.setName(name);
+
+        return super.create(campaign);
     }
 
 }

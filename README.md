@@ -10,4 +10,6 @@ PikaQ
 
 ![http://ww1.sinaimg.cn/bmiddle/60c9620fjw1eozsd1u8fuj205k06a3z3.jpg](http://ww1.sinaimg.cn/bmiddle/60c9620fjw1eozsd1u8fuj205k06a3z3.jpg)
 
+#### 联系·讨论
 
+java技术QQ群：68373211

@@ -5,6 +5,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.baidu.pikaq.core.db.store.StoreDataStatusEnum;
 import com.baidu.pikaq.demo.service.DB;
 import com.baidu.pikaq.utils.DateUtils;
 import com.baidu.ub.common.commons.BaseObject;
@@ -36,6 +37,12 @@ public class PikaData extends BaseObject<Long> {
      */
     @Column(value = "data")
     private String data;
+
+    /**
+     * status
+     */
+    @Column(value = "status")
+    private Integer status = StoreDataStatusEnum.INIT.getValue();
 
     /**
      * 设置 生成时间

@@ -17,7 +17,7 @@ public class DbStoreResolver implements StoreResolver {
     public void resolve(String correlation, String data) {
 
         DbStoreUserCallback dbStoreUserCallback =
-            (DbStoreUserCallback) SpringContextUtil.getBeansOfType(DbStoreUserCallback.class);
+            (DbStoreUserCallback) SpringContextUtil.getBean(DbStoreUserCallback.class);
         if (dbStoreUserCallback != null && data != null && correlation != null) {
 
             LOGGER.debug("save pikaq data to db.");

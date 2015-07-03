@@ -73,7 +73,7 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
             dataConvert = mapper.writeValueAsString(data);
 
             // store
-            makeStore(dataConvert, correlation, false);
+            makeStore(dataConvert, correlation, update2Store);
         } catch (IOException e) {
             throw new AmqpException(e);
         }

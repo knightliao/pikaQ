@@ -1,4 +1,4 @@
-package com.baidu.pikaq.client.gateway.impl;
+package com.baidu.pikaq.client.producer.gateway.impl;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -12,7 +12,7 @@ import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.support.RabbitGatewaySupport;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baidu.pikaq.client.gateway.PikaQGateway;
+import com.baidu.pikaq.client.producer.gateway.PikaQGateway;
 import com.baidu.pikaq.core.db.commit.CommitExecutorFactory;
 import com.baidu.pikaq.core.db.commit.executor.CommitExecutor;
 import com.baidu.pikaq.core.db.store.StoreFactory;

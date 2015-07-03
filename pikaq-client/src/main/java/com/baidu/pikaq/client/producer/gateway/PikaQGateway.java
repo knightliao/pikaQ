@@ -1,4 +1,4 @@
-package com.baidu.pikaq.client.gateway;
+package com.baidu.pikaq.client.producer.gateway;
 
 /**
  * Created by knightliao on 15/7/2.

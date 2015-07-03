@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.baidu.pikaq.client.gateway.PikaQGateway;
+import com.baidu.pikaq.client.producer.gateway.PikaQGateway;
 import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
 import com.baidu.pikaq.demo.service.campaign.dao.CampaignDao;
 import com.baidu.pikaq.demo.service.campaign.service.CampaignMgr;

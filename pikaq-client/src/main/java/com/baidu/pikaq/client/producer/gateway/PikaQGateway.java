@@ -11,11 +11,4 @@ public interface PikaQGateway {
      * @param data
      */
     void send(String exchange, String routeKey, Object data);
-
-    /**
-     * @param exchange
-     * @param routeKey
-     * @param data
-     */
-    void send(String exchange, String routeKey, Object data, boolean update2Store);
 }

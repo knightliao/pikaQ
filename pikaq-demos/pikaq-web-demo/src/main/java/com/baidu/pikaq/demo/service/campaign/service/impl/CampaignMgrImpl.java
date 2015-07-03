@@ -56,7 +56,7 @@ public class CampaignMgrImpl implements CampaignMgr {
 
         // send message
         pikaQGateway.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.DEFAULT_ROUTE_KEY,
-                             CampaignPikaMessageConverter.convert2PikaMessage(campaign), true);
+                             CampaignPikaMessageConverter.convert2PikaMessage(campaign));
 
         return campaign;
     }

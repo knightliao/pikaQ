@@ -43,19 +43,6 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
     @Override
     public void send(String exchange, String routeKey, Object data) {
 
-        this.send(exchange, routeKey, false);
-    }
-
-    /**
-     * @param exchange
-     * @param routeKey
-     * @param data
-     * @param update2Store
-     */
-    @Transactional
-    @Override
-    public void send(String exchange, String routeKey, Object data, boolean update2Store) {
-
         // exchange
         getRabbitTemplate().setExchange(exchange);
 
@@ -73,7 +60,7 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
             dataConvert = mapper.writeValueAsString(data);
 
             // store
-            makeStore(dataConvert, correlation, update2Store);
+            makeStore(dataConvert, correlation, true);
         } catch (IOException e) {
             throw new AmqpException(e);
         }

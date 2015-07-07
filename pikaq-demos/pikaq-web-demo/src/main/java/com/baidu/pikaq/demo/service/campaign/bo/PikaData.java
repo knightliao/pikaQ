@@ -20,10 +20,12 @@ public class PikaData extends BaseObject<Long> {
 
     protected static final Logger LOG = LoggerFactory.getLogger(Campaign.class);
 
+    public static final String PIKA_DATA_COLUMN_CORRELATION = "correlation";
+
     /**
      * 业务逻辑ID
      */
-    @Column(value = "correlation")
+    @Column(value = PIKA_DATA_COLUMN_CORRELATION)
     private String correlation;
 
     /**
@@ -45,6 +47,12 @@ public class PikaData extends BaseObject<Long> {
     private Integer status = StoreDataStatusEnum.INIT.getValue();
 
     /**
+     * err_msg
+     */
+    @Column(value = "infoMsg")
+    private String infoMsg;
+
+    /**
      * 设置 生成时间
      */
     public void setCurrentCreateTime() {
@@ -59,6 +67,14 @@ public class PikaData extends BaseObject<Long> {
         this.correlation = correlation;
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
     public String getCreateTime() {
         return createTime;
     }
@@ -67,11 +83,30 @@ public class PikaData extends BaseObject<Long> {
         this.createTime = createTime;
     }
 
-    public String getData() {
-        return data;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    public String getInfoMsg() {
+        return infoMsg;
+    }
+
+    public void setInfoMsg(String infoMsg) {
+        this.infoMsg = infoMsg;
+    }
+
+    @Override
+    public String toString() {
+        return "PikaData{" +
+                   "correlation='" + correlation + '\'' +
+                   ", createTime='" + createTime + '\'' +
+                   ", data='" + data + '\'' +
+                   ", status=" + status +
+                   ", infoMsg=" + infoMsg +
+                   '}';
     }
 }

@@ -47,9 +47,8 @@
 
     <!-- listener container -->
     <listener-container concurrency="5" connection-factory="connectionFactory"
-                        message-converter="jsonConverterWithDefaultType"
                         xmlns="http://www.springframework.org/schema/rabbit">
-        <listener ref="serverHandler" method="handleMessage" queues="pikaQDemoLogMessageQueue"/>
+        <listener ref="serverHandler" queues="pikaQDemoLogMessageQueue"/>
     </listener-container>
 
     <!-- exchange -->

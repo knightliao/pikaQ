@@ -16,7 +16,7 @@ import com.baidu.pikaq.client.producer.gateway.PikaQGateway;
 import com.baidu.pikaq.core.db.commit.CommitExecutorFactory;
 import com.baidu.pikaq.core.db.commit.executor.CommitExecutor;
 import com.baidu.pikaq.core.db.store.StoreFactory;
-import com.baidu.pikaq.core.db.store.StoreResolver;
+import com.baidu.pikaq.core.db.store.StoreProducerResolver;
 
 /**
  * Created by knightliao on 15/7/2.
@@ -32,7 +32,7 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
     private CommitExecutor afterCommitExecutor = CommitExecutorFactory.getAfterCommitDefaultImpl();
 
     // pikaq data 存储方案
-    private StoreResolver storeResolver = StoreFactory.getDebStoreImpl();
+    private StoreProducerResolver storeResolver = StoreFactory.getDebStoreProducerImpl();
 
     /**
      * @param exchange

@@ -13,11 +13,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface PikaQ {
-
-    /**
-     *
-     */
-    boolean update2Store() default false;
+public @interface PikaQConsumer {
 
 }

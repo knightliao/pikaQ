@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baidu.pikaq.demo.service.AbstractDao;
 import com.baidu.pikaq.demo.service.campaign.bo.PikaData;
 import com.baidu.pikaq.demo.service.campaign.dao.PikaDataDao;
+import com.baidu.unbiz.common.genericdao.operator.Match;
 
 /**
  * Created by knightliao on 15/7/2.
@@ -20,7 +21,7 @@ public class PikaDataDaoImpl extends AbstractDao<Long, PikaData> implements Pika
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
-    public void saveData(String correlation, String data) {
+    public void createOne(String correlation, String data) {
 
         PikaData pikaData = new PikaData();
 
@@ -30,4 +31,24 @@ public class PikaDataDaoImpl extends AbstractDao<Long, PikaData> implements Pika
 
         this.create(pikaData);
     }
+
+    @Override
+    public void createOne(PikaData item) {
+
+        PikaData pikaData = new PikaData();
+
+        pikaData.setCorrelation(item.getCorrelation());
+        pikaData.setCurrentCreateTime();
+        pikaData.setData(item.getData());
+        pikaData.setStatus(item.getStatus());
+
+        this.create(pikaData);
+    }
+
+    @Override
+    public PikaData getByCorrelation(String correlation) {
+
+        return this.findOne(new Match(PikaData.PIKA_DATA_COLUMN_CORRELATION, correlation));
+    }
+
 }

@@ -2,16 +2,21 @@ package com.baidu.pikaq.demo.origin.consumer.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.amqp.core.Message;
+
+import com.baidu.pikaq.client.consumer.ConsumerListenerBase;
+import com.baidu.pikaq.demo.origin.common.TradeRequest;
 
 /**
  *
  */
-public class ServerHandler {
+public class ServerHandler extends ConsumerListenerBase<TradeRequest> {
 
     protected static final Logger LOG = LoggerFactory.getLogger(ServerHandler.class);
 
-    public void handleMessage(Message tradeRequest) {
+    /**
+     * @param tradeRequest
+     */
+    public void handleMessage(TradeRequest tradeRequest) {
 
         LOG.info("receive: " + tradeRequest.toString());
     }

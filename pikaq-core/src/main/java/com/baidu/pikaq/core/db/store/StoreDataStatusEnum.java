@@ -2,6 +2,8 @@ package com.baidu.pikaq.core.db.store;
 
 /**
  * Created by knightliao on 15/7/3.
+ * <p/>
+ * store q enum
  */
 public enum StoreDataStatusEnum {
 

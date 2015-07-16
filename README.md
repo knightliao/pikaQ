@@ -34,6 +34,20 @@ pikaQ.git branches and Maven version:
 - master(stable branch)：0.0.1-SNAPSHOT
 - [更新日志](https://github.com/knightliao/pikaQ/wiki/updates) 
 
+### pikaq-client 使用 ###
+
+在您的 Maven POM 文件里加入：
+
+    <dependency>
+        <groupId>com.baidu.pikaq</groupId>
+        <artifactId>pikaq-client</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+
+### Tutorials ###
+
+- [Tutorial 1 可靠消息组件使用](https://github.com/knightliao/disconf/wiki/Tutorial1)
+
 ### 联系·讨论
 
 java技术QQ群：68373211

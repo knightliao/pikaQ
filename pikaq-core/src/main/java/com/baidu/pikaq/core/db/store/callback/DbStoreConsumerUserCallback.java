@@ -7,44 +7,52 @@ import com.baidu.pikaq.core.db.store.exception.StoreUserCallbackException;
  * Created by knightliao on 15/7/6.
  * 用户consumer callback
  */
-public interface DbStoreConsumerUserCallback<MQDATA extends Object> {
+public interface DbStoreConsumerUserCallback {
 
     /**
      * 是否存在
      *
-     * @param message
+     * @param correlation
      *
      * @return
      */
-    boolean exist(MQDATA message);
+    boolean exist(String correlation);
 
     /**
-     * @param message
+     * @param correlation
      *
      * @return
      *
-     * @throws com.baidu.pikaq.core.db.store.exception.StoreException
+     * @throws StoreException
      */
-    boolean isProcessing(MQDATA message) throws StoreException;
+    boolean isProcessing(String correlation) throws StoreException;
 
     /**
      * 处理为正在处理中
      *
-     * @param message
+     * @param correlation
+     *
+     * @throws StoreUserCallbackException
      */
-    void update2Processing(MQDATA message) throws StoreUserCallbackException;
+    void update2Processing(String correlation) throws StoreUserCallbackException;
 
     /**
      * 处理为成功
      *
-     * @param message
+     * @param correlation
+     * @param infoMsg
+     *
+     * @throws StoreUserCallbackException
      */
-    void update2Success(MQDATA message, String infoMsg) throws StoreUserCallbackException;
+    void update2Success(String correlation, String infoMsg) throws StoreUserCallbackException;
 
     /**
      * 处理为失败
      *
-     * @param message
+     * @param correlation
+     * @param infoMsg
+     *
+     * @throws StoreUserCallbackException
      */
-    void update2Failed(MQDATA message, String infoMsg) throws StoreUserCallbackException;
+    void update2Failed(String correlation, String infoMsg) throws StoreUserCallbackException;
 }

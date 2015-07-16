@@ -16,14 +16,14 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
     private static final Logger LOGGER = LoggerFactory.getLogger(DbStoreConsumerResolver.class);
 
     @Override
-    public boolean exist(Object message) throws StoreException {
+    public boolean exist(String correlation) throws StoreException {
 
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("getCorrelationId db.");
-            return dbStoreUserCallback.exist(message);
+            return dbStoreUserCallback.exist(correlation);
 
         } else {
             String errorMsg = "getCorrelationId dbStoreUserCallback is null";
@@ -33,20 +33,20 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
     }
 
     /**
-     * @param message
+     * @param correlation
      *
      * @return
      *
      * @throws StoreException
      */
     @Override
-    public boolean isProcessing(Object message) throws StoreException {
+    public boolean isProcessing(String correlation) throws StoreException {
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("isProcessing db.");
-            return dbStoreUserCallback.isProcessing(message);
+            return dbStoreUserCallback.isProcessing(correlation);
 
         } else {
             String errorMsg = "isProcessing dbStoreUserCallback is null";
@@ -55,15 +55,20 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
         }
     }
 
+    /**
+     * @param correlation
+     *
+     * @throws StoreException
+     */
     @Override
-    public void update2Processing(Object message) throws StoreException {
+    public void update2Processing(String correlation) throws StoreException {
 
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("update2Processing db.");
-            dbStoreUserCallback.update2Processing(message);
+            dbStoreUserCallback.update2Processing(correlation);
 
         } else {
             String errorMsg = "update2Processing dbStoreUserCallback is null";
@@ -71,15 +76,21 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
         }
     }
 
+    /**
+     * @param correlation
+     * @param infoMsg
+     *
+     * @throws StoreException
+     */
     @Override
-    public void update2Success(Object message, String infoMsg) throws StoreException {
+    public void update2Success(String correlation, String infoMsg) throws StoreException {
 
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("update2Success db.");
-            dbStoreUserCallback.update2Success(message, infoMsg);
+            dbStoreUserCallback.update2Success(correlation, infoMsg);
 
         } else {
             String errorMsg = "update2Success dbStoreUserCallback is null";
@@ -88,14 +99,14 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
     }
 
     @Override
-    public void update2Failed(Object message, String infoMsg) throws StoreException {
+    public void update2Failed(String correlation, String infoMsg) throws StoreException {
 
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("update2Failed db.");
-            dbStoreUserCallback.update2Failed(message, infoMsg);
+            dbStoreUserCallback.update2Failed(correlation, infoMsg);
 
         } else {
             String errorMsg = "update2Failed dbStoreUserCallback is null";

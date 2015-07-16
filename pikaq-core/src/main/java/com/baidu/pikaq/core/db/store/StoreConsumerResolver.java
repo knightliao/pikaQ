@@ -12,40 +12,50 @@ public interface StoreConsumerResolver {
     /**
      * 获取 correlation id
      *
-     * @param message
-     *
-     * @return
-     */
-    boolean exist(Object message) throws StoreException;
-
-    /**
-     * @param message
+     * @param correlation
      *
      * @return
      *
      * @throws StoreException
      */
-    boolean isProcessing(Object message) throws StoreException;
+    boolean exist(String correlation) throws StoreException;
+
+    /**
+     * @param correlation
+     *
+     * @return
+     *
+     * @throws StoreException
+     */
+    boolean isProcessing(String correlation) throws StoreException;
 
     /**
      * 处理为正在处理中
      *
-     * @param message
+     * @param correlation
+     *
+     * @throws StoreException
      */
-    void update2Processing(Object message) throws StoreException;
+    void update2Processing(String correlation) throws StoreException;
 
     /**
      * 处理为成功
      *
-     * @param message
+     * @param correlation
+     * @param infoMsg
+     *
+     * @throws StoreException
      */
-    void update2Success(Object message, String infoMsg) throws StoreException;
+    void update2Success(String correlation, String infoMsg) throws StoreException;
 
     /**
      * 处理为失败
      *
-     * @param message
+     * @param correlation
+     * @param infoMsg
+     *
+     * @throws StoreException
      */
-    void update2Failed(Object message, String infoMsg) throws StoreException;
+    void update2Failed(String correlation, String infoMsg) throws StoreException;
 
 }

@@ -1,4 +1,4 @@
-package com.baidu.pikaq.demo.service.campaign.bo;
+package com.baidu.pikaq.demo.service.pikadata.bo;
 
 import java.util.Date;
 
@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import com.baidu.pikaq.core.db.store.StoreDataStatusEnum;
 import com.baidu.pikaq.demo.service.DB;
+import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
 import com.baidu.pikaq.utils.DateUtils;
 import com.baidu.ub.common.commons.BaseObject;
 import com.baidu.unbiz.common.genericdao.annotation.Column;
@@ -50,7 +51,7 @@ public class PikaData extends BaseObject<Long> {
      * err_msg
      */
     @Column(value = "infoMsg")
-    private String infoMsg;
+    private String infoMsg = "";
 
     /**
      * 设置 生成时间
@@ -106,7 +107,7 @@ public class PikaData extends BaseObject<Long> {
                    ", createTime='" + createTime + '\'' +
                    ", data='" + data + '\'' +
                    ", status=" + status +
-                   ", infoMsg=" + infoMsg +
+                   ", infoMsg='" + infoMsg + '\'' +
                    '}';
     }
 }

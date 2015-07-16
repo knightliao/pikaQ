@@ -4,7 +4,7 @@ CREATE TABLE `pikaq_data` (
 	`correlation` CHAR(36) NOT NULL COMMENT '唯一标识',
 	`data` MEDIUMTEXT NOT NULL COMMENT '最大16MB，UTF-8',
 	`status` TINYINT(4) NOT NULL DEFAULT '0',
-	`err_msg` VARCHAR(256) NOT NULL DEFAULT '',
+	`infoMsg` VARCHAR(256) NOT NULL DEFAULT '',
 	PRIMARY KEY (`id`),
 	INDEX `correlation_id` (`correlation`),
 	INDEX `status` (`status`)
@@ -12,4 +12,5 @@ CREATE TABLE `pikaq_data` (
 COMMENT='pikaq数据存储'
 COLLATE='utf8_general_ci'
 ENGINE=InnoDB
+AUTO_INCREMENT=6
 ;

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.baidu.pikaq.core.db.store.callback.DbStoreProducerUserCallback;
 import com.baidu.pikaq.core.db.store.exception.StoreUserCallbackException;
-import com.baidu.pikaq.demo.service.campaign.dao.PikaDataDao;
+import com.baidu.pikaq.demo.service.pikadata.dao.PikaDataDao;
 
 /**
  * 保存 pika data

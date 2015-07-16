@@ -1,6 +1,6 @@
-package com.baidu.pikaq.demo.service.campaign.dao;
+package com.baidu.pikaq.demo.service.pikadata.dao;
 
-import com.baidu.pikaq.demo.service.campaign.bo.PikaData;
+import com.baidu.pikaq.demo.service.pikadata.bo.PikaData;
 
 /**
  * Created by knightliao on 15/7/2.

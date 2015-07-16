@@ -1,12 +1,12 @@
-package com.baidu.pikaq.demo.service.campaign.dao.impl;
+package com.baidu.pikaq.demo.service.pikadata.dao.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baidu.pikaq.demo.service.AbstractDao;
-import com.baidu.pikaq.demo.service.campaign.bo.PikaData;
-import com.baidu.pikaq.demo.service.campaign.dao.PikaDataDao;
+import com.baidu.pikaq.demo.service.pikadata.bo.PikaData;
+import com.baidu.pikaq.demo.service.pikadata.dao.PikaDataDao;
 import com.baidu.unbiz.common.genericdao.operator.Match;
 
 /**

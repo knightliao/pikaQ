@@ -45,6 +45,8 @@ public class CampaignMgrImpl implements CampaignMgr {
     }
 
     /**
+     * 强一致性的消息生成
+     *
      * @return
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)

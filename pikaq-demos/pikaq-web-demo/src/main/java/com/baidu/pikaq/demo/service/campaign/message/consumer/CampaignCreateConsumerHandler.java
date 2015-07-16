@@ -7,7 +7,7 @@ import com.baidu.pikaq.client.consumer.ConsumerListenerBase;
 import com.baidu.pikaq.demo.service.campaign.message.CampaignPikaMessage;
 
 /**
- *
+ * 强一致性的消息处理
  */
 public class CampaignCreateConsumerHandler extends ConsumerListenerBase<CampaignPikaMessage> {
 

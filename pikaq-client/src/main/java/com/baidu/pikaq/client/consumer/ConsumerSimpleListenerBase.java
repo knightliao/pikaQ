@@ -7,13 +7,13 @@ import org.springframework.amqp.core.MessageListener;
 import org.springframework.amqp.support.converter.MessageConversionException;
 
 /**
- * 强一致性的消息处理
+ * 简单模式的消息处理
  * <p/>
  * Created by knightliao on 15/7/6.
  */
-public abstract class ConsumerListenerBase<KEY extends Object> implements MessageListener {
+public abstract class ConsumerSimpleListenerBase<KEY extends Object> implements MessageListener {
 
-    protected static final Logger LOG = LoggerFactory.getLogger(ConsumerListenerBase.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(ConsumerSimpleListenerBase.class);
 
     /**
      * 由下游进行处理
@@ -28,7 +28,6 @@ public abstract class ConsumerListenerBase<KEY extends Object> implements Messag
      * @param message
      */
     @Override
-    @PikaQConsumer
     public void onMessage(Message message) {
 
         try {

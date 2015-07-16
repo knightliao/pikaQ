@@ -1,4 +1,4 @@
-package com.baidu.pikaq.demo.service.message;
+package com.baidu.pikaq.demo.service.campaign.message;
 
 import java.math.BigDecimal;
 

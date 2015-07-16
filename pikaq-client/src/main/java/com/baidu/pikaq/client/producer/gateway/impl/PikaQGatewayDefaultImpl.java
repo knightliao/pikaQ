@@ -124,7 +124,6 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
                     storeResolver.resolve(correlation, data);
                 }
             });
-
         }
     }
 

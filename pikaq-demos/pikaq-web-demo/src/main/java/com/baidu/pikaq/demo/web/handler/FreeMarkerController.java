@@ -28,6 +28,14 @@ public class FreeMarkerController {
     @Autowired
     private CampaignMgr campaignMgr;
 
+    /**
+     * Just index
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
     @RequestMapping("/index")
     public ModelAndView Add(HttpServletRequest request, HttpServletResponse response) {
 
@@ -36,12 +44,37 @@ public class FreeMarkerController {
         return new ModelAndView("index", "campaignList", campaignList);
     }
 
-    @RequestMapping("/sendCampaignMessage")
-    public ModelAndView AddCampaignMessage(HttpServletRequest request, HttpServletResponse response) {
+    /**
+     * 添加一个订单：使用消息，并 有数据库强一致性功能
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
+    @RequestMapping("/addCampaignMessageWithHighConsistency")
+    public ModelAndView AddCampaignMessageWithQHighConsistency(HttpServletRequest request,
+                                                               HttpServletResponse response) {
 
         long aa = RandomUtils.nextInt(10000000);
 
         campaignMgr.create("campaign" + String.valueOf(aa), BigDecimal.valueOf(aa));
+
+        List<Campaign> campaignList = campaignMgr.findAll();
+
+        return new ModelAndView("index", "campaignList", campaignList);
+    }
+
+    /**
+     * 对订单数据显示进行缓存：使用消息，但 不需要数据库强一致性功能
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
+    @RequestMapping("/showCampaignWithoutHighConsistency")
+    public ModelAndView showCampaignWithoutQHighConsistency(HttpServletRequest request, HttpServletResponse response) {
 
         List<Campaign> campaignList = campaignMgr.findAll();
 

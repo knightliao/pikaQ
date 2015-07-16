@@ -44,4 +44,17 @@
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 
+    <!-- queue -->
+    <rabbit:queue id="pikaQDemoLogMessageQueue" name="pikaQDemoQueue"/>
+
+    <!-- consumer service -->
+    <bean name="serverHandler" class="com.baidu.pikaq.demo.origin.consumer.service.ServerHandler">
+    </bean>
+
+    <!-- listener container -->
+    <listener-container concurrency="5" connection-factory="connectionFactory"
+                        xmlns="http://www.springframework.org/schema/rabbit">
+        <listener ref="serverHandler" queues="pikaQDemoLogMessageQueue"/>
+    </listener-container>
+
 </beans>

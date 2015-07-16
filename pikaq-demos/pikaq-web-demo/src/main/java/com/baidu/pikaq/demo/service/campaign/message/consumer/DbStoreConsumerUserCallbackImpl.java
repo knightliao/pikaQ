@@ -1,4 +1,4 @@
-package com.baidu.pikaq.demo.service.message;
+package com.baidu.pikaq.demo.service.campaign.message.consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

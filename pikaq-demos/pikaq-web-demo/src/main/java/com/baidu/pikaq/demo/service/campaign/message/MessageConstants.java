@@ -1,4 +1,4 @@
-package com.baidu.pikaq.demo.service.message;
+package com.baidu.pikaq.demo.service.campaign.message;
 
 /**
  * Created by knightliao on 15/7/3.

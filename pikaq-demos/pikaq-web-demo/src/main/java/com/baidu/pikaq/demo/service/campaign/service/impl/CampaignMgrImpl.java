@@ -11,9 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.baidu.pikaq.client.producer.gateway.PikaQGateway;
 import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
 import com.baidu.pikaq.demo.service.campaign.dao.CampaignDao;
+import com.baidu.pikaq.demo.service.campaign.message.CampaignPikaMessageConverter;
+import com.baidu.pikaq.demo.service.campaign.message.MessageConstants;
 import com.baidu.pikaq.demo.service.campaign.service.CampaignMgr;
-import com.baidu.pikaq.demo.service.message.CampaignPikaMessageConverter;
-import com.baidu.pikaq.demo.service.message.MessageConstants;
 
 /**
  *

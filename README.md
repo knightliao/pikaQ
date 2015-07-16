@@ -32,6 +32,7 @@ pikaQ.git branches and Maven version:
 
 - dev(develop branch): 0.0.1-SNAPSHOT
 - master(stable branch)：0.0.1-SNAPSHOT
+- [更新日志](https://github.com/knightliao/pikaQ/wiki/updates) 
 
 ### 联系·讨论
 

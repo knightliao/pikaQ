@@ -11,5 +11,6 @@ public interface DbStoreProducerUserCallback {
      * @param correlation
      * @param data
      */
-    void saveStatusData(String correlation, String data) throws StoreUserCallbackException;
+    void saveStatusData(String correlation, String data, String exchange, String routerKey)
+        throws StoreUserCallbackException;
 }

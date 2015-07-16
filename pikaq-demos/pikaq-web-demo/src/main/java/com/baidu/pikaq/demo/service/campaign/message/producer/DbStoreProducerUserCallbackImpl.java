@@ -17,8 +17,9 @@ public class DbStoreProducerUserCallbackImpl implements DbStoreProducerUserCallb
     private PikaDataDao pikaDataDao;
 
     @Override
-    public void saveStatusData(String correlation, String data) throws StoreUserCallbackException {
+    public void saveStatusData(String correlation, String data, String exchange, String routerKey)
+        throws StoreUserCallbackException {
 
-        pikaDataDao.createOne(correlation, data);
+        pikaDataDao.createOne(correlation, data, exchange, routerKey);
     }
 }

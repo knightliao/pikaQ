@@ -72,6 +72,18 @@ public class PikaData extends BaseObject<Long> {
     private Integer retryCount = 0;
 
     /**
+     * exchange
+     */
+    @Column(value = "exchange")
+    private String exchange = "";
+
+    /**
+     * routerKey
+     */
+    @Column(value = "routerKey")
+    private String routerKey = "";
+
+    /**
      * 设置 生成时间
      */
     public void setCurrentCreateTime() {
@@ -149,6 +161,22 @@ public class PikaData extends BaseObject<Long> {
         this.retryCount = retryCount;
     }
 
+    public String getExchange() {
+        return exchange;
+    }
+
+    public void setExchange(String exchange) {
+        this.exchange = exchange;
+    }
+
+    public String getRouterKey() {
+        return routerKey;
+    }
+
+    public void setRouterKey(String routerKey) {
+        this.routerKey = routerKey;
+    }
+
     @Override
     public String toString() {
         return "PikaData{" +
@@ -160,6 +188,8 @@ public class PikaData extends BaseObject<Long> {
                    ", infoMsg='" + infoMsg + '\'' +
                    ", consumeTime=" + consumeTime +
                    ", retryCount=" + retryCount +
+                   ", exchange='" + exchange + '\'' +
+                   ", routerKey='" + routerKey + '\'' +
                    '}';
     }
 }

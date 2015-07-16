@@ -16,14 +16,14 @@ public class DbStoreProducerResolver implements StoreProducerResolver {
     private static final Logger LOGGER = LoggerFactory.getLogger(DbStoreProducerResolver.class);
 
     @Override
-    public void resolve(String correlation, String data) throws StoreException {
+    public void resolve(String correlation, String data, String exchange, String routerKey) throws StoreException {
 
         DbStoreProducerUserCallback dbStoreUserCallback =
             (DbStoreProducerUserCallback) SpringContextUtil.getBean(DbStoreProducerUserCallback.class);
         if (dbStoreUserCallback != null && data != null && correlation != null) {
 
             LOGGER.debug("save pikaq data to db.");
-            dbStoreUserCallback.saveStatusData(correlation, data);
+            dbStoreUserCallback.saveStatusData(correlation, data, exchange, routerKey);
 
         } else {
 

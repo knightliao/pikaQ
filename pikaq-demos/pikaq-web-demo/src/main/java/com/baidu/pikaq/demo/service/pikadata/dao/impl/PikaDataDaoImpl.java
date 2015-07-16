@@ -21,7 +21,7 @@ public class PikaDataDaoImpl extends AbstractDao<Long, PikaData> implements Pika
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
-    public void createOne(String correlation, String data) {
+    public void createOne(String correlation, String data, String exchange, String routerKey) {
 
         PikaData pikaData = new PikaData();
 
@@ -29,6 +29,8 @@ public class PikaDataDaoImpl extends AbstractDao<Long, PikaData> implements Pika
         pikaData.setCurrentCreateTime();
         pikaData.setCurrentUpdateTime();
         pikaData.setData(data);
+        pikaData.setExchange(exchange);
+        pikaData.setRouterKey(routerKey);
 
         this.create(pikaData);
     }

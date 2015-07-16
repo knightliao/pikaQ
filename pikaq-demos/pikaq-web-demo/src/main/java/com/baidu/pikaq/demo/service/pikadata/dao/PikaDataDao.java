@@ -11,7 +11,7 @@ public interface PikaDataDao {
      * @param correlation
      * @param data
      */
-    void createOne(String correlation, String data);
+    void createOne(String correlation, String data, String exchange, String routerKey);
 
     /**
      */

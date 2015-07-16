@@ -7,5 +7,5 @@ import com.baidu.pikaq.core.db.store.exception.StoreException;
  */
 public interface StoreProducerResolver {
 
-    void resolve(String correlation, String data) throws StoreException;
+    void resolve(String correlation, String data, String exchange, String routerKey) throws StoreException;
 }

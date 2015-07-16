@@ -57,7 +57,7 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
             dataConvert = mapper.writeValueAsString(data);
 
             // store
-            makeStore(dataConvert, correlation, true);
+            makeStore(dataConvert, correlation, exchange, routeKey, true);
         } catch (IOException e) {
             throw new AmqpException(e);
         }
@@ -131,7 +131,8 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
      *
      * @throws IOException
      */
-    private void makeStore(final String data, final String correlation, boolean update2Store) throws IOException {
+    private void makeStore(final String data, final String correlation, final String exchange, final String routerKey,
+                           boolean update2Store) throws IOException {
 
         // save data before commit
         // only when enable
@@ -139,7 +140,7 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
             beforeCommitExecutor.execute(new Runnable() {
                 @Override
                 public void run() {
-                    storeResolver.resolve(correlation, data);
+                    storeResolver.resolve(correlation, data, exchange, routerKey);
                 }
             });
         }

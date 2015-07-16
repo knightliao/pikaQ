@@ -46,16 +46,23 @@
 
     <!-- queue -->
     <rabbit:queue id="pikaQWebDemoLogMessageQueue" name="pikaQWebDemoLogMessageQueue"/>
+    <!-- queue -->
+    <rabbit:queue id="pikaQWebDemoLogMessageQueue2" name="pikaQWebDemoLogMessageQueue2"/>
 
     <!-- consumer service -->
-    <bean name="serverHandler"
+    <bean name="createHandler"
           class="com.baidu.pikaq.demo.service.campaign.message.consumer.CampaignCreateConsumerHandler">
+    </bean>
+    <!-- consumer service -->
+    <bean name="updateHandler"
+          class="com.baidu.pikaq.demo.service.campaign.message.consumer.CampaignUpdateConsumerHandler">
     </bean>
 
     <!-- listener container -->
     <listener-container concurrency="5" connection-factory="connectionFactory"
                         xmlns="http://www.springframework.org/schema/rabbit">
-        <listener ref="serverHandler" queues="pikaQWebDemoLogMessageQueue"/>
+        <listener ref="createHandler" queues="pikaQWebDemoLogMessageQueue"/>
+        <listener ref="updateHandler" queues="pikaQWebDemoLogMessageQueue2"/>
     </listener-container>
 
 </beans>

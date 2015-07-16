@@ -10,4 +10,6 @@ public class MessageConstants {
     public static String DEFAULT_EXCHANGE = "pikaQWebDemoExchange";
 
     public static String DEFAULT_ROUTE_KEY = "logMessageInfo.info";
+    public static String ROUTE_KEY2 = "logMessageInfo.info2";
+
 }

@@ -34,4 +34,17 @@ public interface CampaignDao extends BaseDao<Long, Campaign> {
      */
     Campaign create(String name, BigDecimal price);
 
+    /**
+     * @param id
+     *
+     * @return
+     */
+    Campaign getById(Long id);
+
+    /**
+     * @param id
+     * @param price
+     */
+    void updatePriceById(Long id, BigDecimal price);
+
 }

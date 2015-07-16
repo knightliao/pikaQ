@@ -12,6 +12,7 @@ import com.baidu.pikaq.demo.service.Columns;
 import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
 import com.baidu.pikaq.demo.service.campaign.dao.CampaignDao;
 import com.baidu.unbiz.common.genericdao.operator.Match;
+import com.baidu.unbiz.common.genericdao.operator.Modify;
 
 /**
  *
@@ -19,12 +20,22 @@ import com.baidu.unbiz.common.genericdao.operator.Match;
 @Service
 public class CampaignDaoImpl extends AbstractDao<Long, Campaign> implements CampaignDao {
 
+    /**
+     * @param name
+     *
+     * @return
+     */
     @Override
     public Campaign getByName(String name) {
 
         return findOne(new Match(Columns.NAME, name));
     }
 
+    /**
+     * @param ids
+     *
+     * @return
+     */
     @Override
     public List<Campaign> getByIds(Set<Long> ids) {
 
@@ -33,6 +44,27 @@ public class CampaignDaoImpl extends AbstractDao<Long, Campaign> implements Camp
         }
 
         return find(match(Columns.CAMPAIGN_ID, ids));
+    }
+
+    /**
+     * @param id
+     *
+     * @return
+     */
+    @Override
+    public Campaign getById(Long id) {
+
+        return findOne(match(Columns.CAMPAIGN_ID, id));
+    }
+
+    /**
+     * @param id
+     * @param price
+     */
+    @Override
+    public void updatePriceById(Long id, BigDecimal price) {
+
+        super.update(new Modify(Campaign.CAMPAIGN_COLUMN_PRICE, price), new Match(Columns.CAMPAIGN_ID, id));
     }
 
     /**

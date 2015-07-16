@@ -45,7 +45,7 @@ public class CampaignMgrImpl implements CampaignMgr {
     }
 
     /**
-     * 强一致性的消息生成
+     * 强一致性的消息生成：生成订单
      *
      * @return
      */
@@ -61,5 +61,27 @@ public class CampaignMgrImpl implements CampaignMgr {
                              CampaignPikaMessageConverter.convert2PikaMessage(campaign));
 
         return campaign;
+    }
+
+    /**
+     * 弱一致性消息生成：修改订单，将订单修改数据异步化到其它地方，用作缓存读取。
+     *
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+    @Override
+    public void update(Long campaignId, BigDecimal price) {
+
+        Campaign campaign = campaignDao.get(campaignId);
+        if (campaign != null) {
+
+            // db
+            campaignDao.updatePriceById(campaignId, price);
+            campaign.setPrice(price);
+
+            // send message
+            pikaQGateway.sendSimple(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY2,
+                                       CampaignPikaMessageConverter.convert2PikaMessage(campaign));
+        }
     }
 }

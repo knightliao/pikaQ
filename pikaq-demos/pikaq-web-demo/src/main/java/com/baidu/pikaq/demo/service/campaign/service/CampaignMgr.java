@@ -27,4 +27,12 @@ public interface CampaignMgr {
      */
     Campaign create(String name, BigDecimal price);
 
+    /**
+     * @param campaignId
+     * @param price
+     *
+     * @return
+     */
+    void update(Long campaignId, BigDecimal price);
+
 }

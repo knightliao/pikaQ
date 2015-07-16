@@ -11,4 +11,11 @@ public interface PikaQGateway {
      * @param data
      */
     void send(String exchange, String routeKey, Object data);
+
+    /**
+     * @param exchange
+     * @param routeKey
+     * @param data
+     */
+    void sendSimple(String exchange, String routeKey, Object data);
 }

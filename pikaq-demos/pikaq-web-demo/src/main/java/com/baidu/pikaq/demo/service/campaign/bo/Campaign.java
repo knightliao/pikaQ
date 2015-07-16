@@ -19,6 +19,8 @@ public class Campaign extends BaseObject<Long> {
 
     protected static final Logger LOG = LoggerFactory.getLogger(Campaign.class);
 
+    public static final String CAMPAIGN_COLUMN_PRICE = "price";
+
     /**
      *
      */
@@ -27,7 +29,7 @@ public class Campaign extends BaseObject<Long> {
     /**
      * 价格
      */
-    @Column(value = "price")
+    @Column(value = Campaign.CAMPAIGN_COLUMN_PRICE)
     private BigDecimal price;
 
     /**

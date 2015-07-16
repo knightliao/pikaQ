@@ -45,16 +45,15 @@ public class FreeMarkerController {
     }
 
     /**
-     * 添加一个订单：使用消息，并 有数据库强一致性功能
+     * 添加一个订单：使用强一致性消息
      *
      * @param request
      * @param response
      *
      * @return
      */
-    @RequestMapping("/addCampaignMessageWithHighConsistency")
-    public ModelAndView AddCampaignMessageWithQHighConsistency(HttpServletRequest request,
-                                                               HttpServletResponse response) {
+    @RequestMapping("/addCampaign")
+    public ModelAndView addCampaign(HttpServletRequest request, HttpServletResponse response) {
 
         long aa = RandomUtils.nextInt(10000000);
 
@@ -66,15 +65,17 @@ public class FreeMarkerController {
     }
 
     /**
-     * 对订单数据显示进行缓存：使用消息，但 不需要数据库强一致性功能
+     * 更新一个订单: 使用弱一致性将修改信息传输到另一个地方进行缓存读取
      *
      * @param request
      * @param response
      *
      * @return
      */
-    @RequestMapping("/showCampaignWithoutHighConsistency")
-    public ModelAndView showCampaignWithoutQHighConsistency(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/updateCampaign")
+    public ModelAndView updateCampaign(HttpServletRequest request, HttpServletResponse response) {
+
+        campaignMgr.update(1L, BigDecimal.valueOf(343434L));
 
         List<Campaign> campaignList = campaignMgr.findAll();
 

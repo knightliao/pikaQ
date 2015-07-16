@@ -69,6 +69,24 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
     }
 
     /**
+     * @param exchange
+     * @param routeKey
+     * @param data
+     */
+    @Override
+    public void sendSimple(String exchange, String routeKey, Object data) {
+
+        //
+        final String correlation;
+        correlation = UUID.randomUUID().toString();
+
+        //
+        // send
+        //
+        sendQ(exchange, routeKey, correlation, data);
+    }
+
+    /**
      * 发送消息
      *
      * @param exchange

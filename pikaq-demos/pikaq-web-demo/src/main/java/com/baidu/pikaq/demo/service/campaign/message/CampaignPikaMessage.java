@@ -28,4 +28,12 @@ public class CampaignPikaMessage {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "CampaignPikaMessage{" +
+                   "price=" + price +
+                   ", name='" + name + '\'' +
+                   '}';
+    }
 }

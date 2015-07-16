@@ -83,14 +83,14 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
      * @throws StoreException
      */
     @Override
-    public void update2Success(String correlation, String infoMsg) throws StoreException {
+    public void update2Success(String correlation, String infoMsg, Long costTime) throws StoreException {
 
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("update2Success db.");
-            dbStoreUserCallback.update2Success(correlation, infoMsg);
+            dbStoreUserCallback.update2Success(correlation, infoMsg, costTime);
 
         } else {
             String errorMsg = "update2Success dbStoreUserCallback is null";
@@ -99,14 +99,14 @@ public class DbStoreConsumerResolver implements StoreConsumerResolver {
     }
 
     @Override
-    public void update2Failed(String correlation, String infoMsg) throws StoreException {
+    public void update2Failed(String correlation, String infoMsg, Long costTime) throws StoreException {
 
         DbStoreConsumerUserCallback dbStoreUserCallback = getCallback();
 
         if (dbStoreUserCallback != null) {
 
             LOGGER.debug("update2Failed db.");
-            dbStoreUserCallback.update2Failed(correlation, infoMsg);
+            dbStoreUserCallback.update2Failed(correlation, infoMsg, costTime);
 
         } else {
             String errorMsg = "update2Failed dbStoreUserCallback is null";

@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 
 import com.baidu.pikaq.core.db.store.StoreConsumerResolver;
 import com.baidu.pikaq.core.db.store.StoreFactory;
+import com.baidu.pikaq.core.db.store.exception.StoreException;
+import com.baidu.pikaq.core.db.store.exception.StoreUserCallbackException;
 
 /**
  * Created by knightliao on 15/7/2.
@@ -36,55 +38,78 @@ public class PikaQConsumerAspect {
 
         Object object = null;
 
-        //
-        // convert
-        //
+        Long startTime = System.currentTimeMillis();
+
         try {
 
-            object = PikaQConsumerAspect.messageConverter.fromMessage(message);
+            //
+            String correlationId = new String(message.getMessageProperties().getCorrelationId(), "UTF-8");
 
-            // 是否在处理中
-            isProcessing = storeResolver.isProcessing(object);
+            //
+            // convert
+            //
+            try {
 
-        } catch (MessageConversionException e) {
+                object = PikaQConsumerAspect.messageConverter.fromMessage(message);
 
-            LOGGER.error(e.toString(), e);
-        }
+                // 是否在处理中
+                isProcessing = storeResolver.isProcessing(correlationId);
 
-        //
-        // execute
-        //
-        if (object != null) {
-            if (!isProcessing) {
+            } catch (MessageConversionException e) {
 
-                // setting to processing
-                storeResolver.update2Processing(object);
-
-                // 执行
-                Object rtnOb;
-                try {
-
-                    // 执行方法
-                    rtnOb = pjp.proceed();
-
-                    // setting to success
-                    storeResolver.update2Success(object, "");
-
-                } catch (Throwable t) {
-                    LOGGER.error(t.getMessage());
-
-                    // setting to failed
-                    storeResolver.update2Success(object, t.getMessage()
-                                                             .substring(0, Math.min(255, t.getMessage().length() - 1)));
-
-                    throw t;
-                }
-
-                return rtnOb;
-            } else {
-
-                LOGGER.info("is processing, ignore: " + object.toString());
+                LOGGER.error(e.toString(), e);
             }
+
+            //
+            // execute
+            //
+            if (object != null) {
+                if (!isProcessing) {
+
+                    // setting to processing
+                    storeResolver.update2Processing(correlationId);
+
+                    // 执行
+                    Object rtnOb;
+                    try {
+
+                        // 执行方法
+                        rtnOb = pjp.proceed();
+
+                        // setting to success
+                        storeResolver.update2Success(correlationId, "", System.currentTimeMillis() - startTime);
+
+                    } catch (Throwable t) {
+                        LOGGER.error(t.getMessage());
+
+                        // setting to failed
+                        storeResolver.update2Success(correlationId, t.getMessage().substring(0, Math.min(255,
+                                                                                                            t.getMessage()
+                                                                                                                .length() -
+                                                                                                                1)),
+                                                        System.currentTimeMillis() - startTime);
+
+                        throw t;
+                    }
+
+                    return rtnOb;
+                } else {
+
+                    LOGGER.info("is processing, ignore: " + object.toString());
+                }
+            }
+
+        } catch (StoreException storeException) {
+
+            LOGGER.error(storeException.toString(), storeException);
+
+        } catch (StoreUserCallbackException storeUserCallbackException) {
+
+            LOGGER.error("user's store call back error", storeUserCallbackException);
+
+        } catch (Exception e) {
+
+            LOGGER.error("process message error", e);
         }
 
         return null;

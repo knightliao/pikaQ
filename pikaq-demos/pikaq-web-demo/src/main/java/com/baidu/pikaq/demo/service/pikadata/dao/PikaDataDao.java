@@ -15,7 +15,7 @@ public interface PikaDataDao {
 
     /**
      */
-    void createOne(PikaData pikaData);
+    void updateOne(PikaData pikaData);
 
     /**
      * @param correlation

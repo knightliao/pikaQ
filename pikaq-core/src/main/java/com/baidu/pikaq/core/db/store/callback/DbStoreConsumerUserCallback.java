@@ -44,7 +44,7 @@ public interface DbStoreConsumerUserCallback {
      *
      * @throws StoreUserCallbackException
      */
-    void update2Success(String correlation, String infoMsg) throws StoreUserCallbackException;
+    void update2Success(String correlation, String infoMsg, Long costTime) throws StoreUserCallbackException;
 
     /**
      * 处理为失败
@@ -54,5 +54,5 @@ public interface DbStoreConsumerUserCallback {
      *
      * @throws StoreUserCallbackException
      */
-    void update2Failed(String correlation, String infoMsg) throws StoreUserCallbackException;
+    void update2Failed(String correlation, String infoMsg, Long costTime) throws StoreUserCallbackException;
 }

@@ -23,7 +23,7 @@ import com.baidu.pikaq.core.db.store.StoreProducerResolver;
  */
 public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements PikaQGateway {
 
-    protected final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    protected final Logger LOGGER = LoggerFactory.getLogger(PikaQGatewayDefaultImpl.class);
 
     // 提交前设置
     private CommitExecutor beforeCommitExecutor = CommitExecutorFactory.getBeforeCommitDefaultImpl();
@@ -42,9 +42,6 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
     @Transactional
     @Override
     public void send(String exchange, String routeKey, Object data) {
-
-        // exchange
-        getRabbitTemplate().setExchange(exchange);
 
         //
         final String correlation;
@@ -80,6 +77,9 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
      * @param data
      */
     private void sendQ(final String exchange, final String routeKey, final String correlation, final Object data) {
+
+        // exchange
+        getRabbitTemplate().setExchange(exchange);
 
         afterCommitExecutor.execute(new Runnable() {
             @Override

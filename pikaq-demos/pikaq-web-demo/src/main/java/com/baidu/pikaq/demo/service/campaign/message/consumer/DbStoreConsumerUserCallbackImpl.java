@@ -60,7 +60,7 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (null != pikaData) {
             pikaData.setStatus(StoreDataStatusEnum.PROCESS.getValue());
-            pikaDataDao.createOne(pikaData);
+            pikaDataDao.updateOne(pikaData);
         } else {
 
             throw new StoreUserCallbackException("cannot find this message " + correlation);
@@ -75,13 +75,14 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
      *
      * @throws StoreUserCallbackException
      */
-    public void update2Success(String correlation, String infoMsg) throws StoreUserCallbackException {
+    public void update2Success(String correlation, String infoMsg, Long costTime) throws StoreUserCallbackException {
 
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (pikaData != null) {
             pikaData.setStatus(StoreDataStatusEnum.SUCCESS.getValue());
+            pikaData.setConsumeTime(costTime);
             pikaData.setInfoMsg(infoMsg);
-            pikaDataDao.createOne(pikaData);
+            pikaDataDao.updateOne(pikaData);
         } else {
             throw new StoreUserCallbackException("cannot find this message " + correlation);
         }
@@ -94,13 +95,14 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
      *
      * @throws StoreUserCallbackException
      */
-    public void update2Failed(String correlation, String infoMsg) throws StoreUserCallbackException {
+    public void update2Failed(String correlation, String infoMsg, Long costTime) throws StoreUserCallbackException {
 
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (pikaData != null) {
             pikaData.setStatus(StoreDataStatusEnum.FAILED.getValue());
+            pikaData.setConsumeTime(costTime);
             pikaData.setInfoMsg(infoMsg);
-            pikaDataDao.createOne(pikaData);
+            pikaDataDao.updateOne(pikaData);
         } else {
             throw new StoreUserCallbackException("update2Failed cannot find this message: " + correlation);
         }

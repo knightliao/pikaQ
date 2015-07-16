@@ -32,8 +32,14 @@ public class PikaData extends BaseObject<Long> {
     /**
      * 生成时间
      */
-    @Column(value = "create_time")
+    @Column(value = "createTime")
     private String createTime;
+
+    /**
+     * 更新时间
+     */
+    @Column(value = "updateTime")
+    private String updateTime;
 
     /**
      * data
@@ -54,10 +60,29 @@ public class PikaData extends BaseObject<Long> {
     private String infoMsg = "";
 
     /**
+     * consumeTime
+     */
+    @Column(value = "consumeTime")
+    private Long consumeTime = 0L;
+
+    /**
+     * consumeTime
+     */
+    @Column(value = "retryCount")
+    private Integer retryCount = 0;
+
+    /**
      * 设置 生成时间
      */
     public void setCurrentCreateTime() {
         this.setCreateTime(DateUtils.formatDate(new Date(), DateUtils.DEFAULT_TIME_FORMAT));
+    }
+
+    /**
+     * 设置 更新时间
+     */
+    public void setCurrentUpdateTime() {
+        this.setUpdateTime(DateUtils.formatDate(new Date(), DateUtils.DEFAULT_TIME_FORMAT));
     }
 
     public String getCorrelation() {
@@ -100,14 +125,41 @@ public class PikaData extends BaseObject<Long> {
         this.infoMsg = infoMsg;
     }
 
+    public String getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public Long getConsumeTime() {
+        return consumeTime;
+    }
+
+    public void setConsumeTime(Long consumeTime) {
+        this.consumeTime = consumeTime;
+    }
+
+    public Integer getRetryCount() {
+        return retryCount;
+    }
+
+    public void setRetryCount(Integer retryCount) {
+        this.retryCount = retryCount;
+    }
+
     @Override
     public String toString() {
         return "PikaData{" +
                    "correlation='" + correlation + '\'' +
                    ", createTime='" + createTime + '\'' +
+                   ", updateTime='" + updateTime + '\'' +
                    ", data='" + data + '\'' +
                    ", status=" + status +
                    ", infoMsg='" + infoMsg + '\'' +
+                   ", consumeTime=" + consumeTime +
+                   ", retryCount=" + retryCount +
                    '}';
     }
 }

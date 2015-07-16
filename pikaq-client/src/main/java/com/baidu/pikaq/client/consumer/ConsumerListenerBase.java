@@ -42,4 +42,5 @@ public abstract class ConsumerListenerBase<KEY extends Object> implements Messag
             LOG.error(e.toString(), e);
         }
     }
+
 }

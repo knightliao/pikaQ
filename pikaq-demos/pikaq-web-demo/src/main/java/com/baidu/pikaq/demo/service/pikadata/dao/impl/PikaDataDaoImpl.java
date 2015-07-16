@@ -27,22 +27,17 @@ public class PikaDataDaoImpl extends AbstractDao<Long, PikaData> implements Pika
 
         pikaData.setCorrelation(correlation);
         pikaData.setCurrentCreateTime();
+        pikaData.setCurrentUpdateTime();
         pikaData.setData(data);
 
         this.create(pikaData);
     }
 
     @Override
-    public void createOne(PikaData item) {
+    public void updateOne(PikaData item) {
 
-        PikaData pikaData = new PikaData();
-
-        pikaData.setCorrelation(item.getCorrelation());
-        pikaData.setCurrentCreateTime();
-        pikaData.setData(item.getData());
-        pikaData.setStatus(item.getStatus());
-
-        this.create(pikaData);
+        item.setCurrentUpdateTime();
+        this.update(item);
     }
 
     @Override

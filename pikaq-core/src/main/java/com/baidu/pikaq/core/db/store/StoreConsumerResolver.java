@@ -46,7 +46,7 @@ public interface StoreConsumerResolver {
      *
      * @throws StoreException
      */
-    void update2Success(String correlation, String infoMsg) throws StoreException;
+    void update2Success(String correlation, String infoMsg, Long costTime) throws StoreException;
 
     /**
      * 处理为失败
@@ -56,6 +56,6 @@ public interface StoreConsumerResolver {
      *
      * @throws StoreException
      */
-    void update2Failed(String correlation, String infoMsg) throws StoreException;
+    void update2Failed(String correlation, String infoMsg, Long costTime) throws StoreException;
 
 }

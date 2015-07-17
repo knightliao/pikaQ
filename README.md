@@ -50,7 +50,7 @@ pikaQ.git branches and Maven version:
 
 ### 联系与赞助作者
 
-[https://github.com/knightliao/disconf/wiki/sponsor](https://github.com/knightliao/disconf/wiki/sponsor)
+[https://github.com/knightliao/pikaQ/wiki/sponsor](https://github.com/knightliao/pikaQ/wiki/sponsor)
 
 ### 群·联系·讨论
 

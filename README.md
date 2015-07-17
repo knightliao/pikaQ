@@ -54,6 +54,5 @@ pikaQ.git branches and Maven version:
 
 ### 群·联系·讨论
 
-- disconf技术QQ群: 239203866 
 - java技术QQ群：68373211
 - 我的微信：knightliao

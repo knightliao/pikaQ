@@ -46,6 +46,7 @@
 
     <!-- queue -->
     <rabbit:queue id="pikaQWebDemoLogMessageQueue" name="pikaQWebDemoLogMessageQueue"/>
+    <rabbit:queue id="pikaQWebDemoLogMessageQueueConsumerError" name="pikaQWebDemoLogMessageQueueConsumerError"/>
     <!-- queue -->
     <rabbit:queue id="pikaQWebDemoLogMessageQueue2" name="pikaQWebDemoLogMessageQueue2"/>
 

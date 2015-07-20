@@ -9,7 +9,16 @@ public class MessageConstants {
 
     public static String DEFAULT_EXCHANGE = "pikaQWebDemoExchange";
 
+    /**
+     * normal
+     */
     public static String DEFAULT_ROUTE_KEY = "logMessageInfo.info";
     public static String ROUTE_KEY2 = "logMessageInfo.info2";
+
+    /**
+     * consumer error
+     */
+    public static String ROUTE_KEY_CONSUMER_ERROR = "logMessageInfo.consumer.error";
+    public static String ROUTE_KEY2_CONSUMER_ERROR = "logMessageInfo.consumer.error";
 
 }

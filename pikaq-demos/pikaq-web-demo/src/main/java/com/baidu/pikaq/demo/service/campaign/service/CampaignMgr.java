@@ -28,6 +28,14 @@ public interface CampaignMgr {
     Campaign create(String name, BigDecimal price);
 
     /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    Campaign createWithConsumerError(String name, BigDecimal price);
+
+    /**
      * @param campaignId
      * @param price
      *

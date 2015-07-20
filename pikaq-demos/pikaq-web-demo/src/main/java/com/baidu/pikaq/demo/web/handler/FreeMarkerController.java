@@ -65,6 +65,26 @@ public class FreeMarkerController {
     }
 
     /**
+     * 添加一个订单：使用强一致性消息
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
+    @RequestMapping("/addCampaignConsumerError")
+    public ModelAndView addCampaignConsumerError(HttpServletRequest request, HttpServletResponse response) {
+
+        long aa = RandomUtils.nextInt(10000000);
+
+        campaignMgr.createWithConsumerError("campaign" + String.valueOf(aa), BigDecimal.valueOf(aa));
+
+        List<Campaign> campaignList = campaignMgr.findAll();
+
+        return new ModelAndView("index", "campaignList", campaignList);
+    }
+
+    /**
      * 更新一个订单: 使用弱一致性将修改信息传输到另一个地方进行缓存读取
      *
      * @param request

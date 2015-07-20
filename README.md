@@ -46,7 +46,8 @@ pikaQ.git branches and Maven version:
 
 ### Tutorials ###
 
-- [Tutorial 1 可靠消息组件使用](https://github.com/knightliao/pikaQ/wiki/Tutorial1)
+- [Tutorial 1 可靠消息组件使用（上游）](https://github.com/knightliao/pikaQ/wiki/Tutorial1)
+- [Tutorial 2 PikaQ安全机制配置](https://github.com/knightliao/pikaQ/wiki/Tutorial2)
 
 ### 联系与赞助作者
 

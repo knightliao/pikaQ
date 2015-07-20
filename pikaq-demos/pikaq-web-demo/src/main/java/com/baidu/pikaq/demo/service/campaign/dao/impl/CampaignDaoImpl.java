@@ -1,6 +1,8 @@
 package com.baidu.pikaq.demo.service.campaign.dao.impl;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +13,7 @@ import com.baidu.pikaq.demo.service.AbstractDao;
 import com.baidu.pikaq.demo.service.Columns;
 import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
 import com.baidu.pikaq.demo.service.campaign.dao.CampaignDao;
+import com.baidu.pikaq.utils.DateUtils;
 import com.baidu.unbiz.common.genericdao.operator.Match;
 import com.baidu.unbiz.common.genericdao.operator.Modify;
 
@@ -64,7 +67,12 @@ public class CampaignDaoImpl extends AbstractDao<Long, Campaign> implements Camp
     @Override
     public void updatePriceById(Long id, BigDecimal price) {
 
-        super.update(new Modify(Campaign.CAMPAIGN_COLUMN_PRICE, price), new Match(Columns.CAMPAIGN_ID, id));
+        List<Modify> modifies = new ArrayList<Modify>();
+        modifies.add(new Modify(Campaign.CAMPAIGN_COLUMN_PRICE, price));
+        modifies.add(new Modify(Campaign.CAMPAIGN_COLUMN_UPDATE_TIME,
+                                   DateUtils.formatDate(new Date(), DateUtils.DEFAULT_TIME_FORMAT)));
+
+        super.update(modifies, new Match(Columns.CAMPAIGN_ID, id));
     }
 
     /**
@@ -79,6 +87,7 @@ public class CampaignDaoImpl extends AbstractDao<Long, Campaign> implements Camp
         Campaign campaign = new Campaign();
         campaign.setPrice(price);
         campaign.setName(name);
+        campaign.setCurrentCreateTime();
 
         return super.create(campaign);
     }

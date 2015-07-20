@@ -52,8 +52,8 @@ public class FreeMarkerController {
      *
      * @return
      */
-    @RequestMapping("/addCampaign")
-    public ModelAndView addCampaign(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/addCampaignPikaQStrong")
+    public ModelAndView addCampaignPikaQStrong(HttpServletRequest request, HttpServletResponse response) {
 
         long aa = RandomUtils.nextInt(10000000);
 
@@ -65,15 +65,59 @@ public class FreeMarkerController {
     }
 
     /**
-     * 添加一个订单：使用强一致性消息
+     * 添加一个订单：使用强一致性消息，有异常:<br/>
+     * 发送消息后，本地事务未能提交，pikaq保证：未扣款，订单未提交
      *
      * @param request
      * @param response
      *
      * @return
      */
-    @RequestMapping("/addCampaignConsumerError")
-    public ModelAndView addCampaignConsumerError(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/addCampaignConsumerErrorPikaQStrong")
+    public ModelAndView addCampaignConsumerErrorPikaQStrong(HttpServletRequest request, HttpServletResponse response) {
+
+        long aa = RandomUtils.nextInt(10000000);
+
+        campaignMgr.createWithConsumerErrorPikaQStrong("campaign" + String.valueOf(aa), BigDecimal.valueOf(aa));
+
+        List<Campaign> campaignList = campaignMgr.findAll();
+
+        return new ModelAndView("index", "campaignList", campaignList);
+    }
+
+    /**
+     * 添加一个订单：使用弱一致性消息，有异常:<br/>
+     * 发送消息后，本地事务未能提交，pikaq保证：未扣款，订单未提交
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
+    @RequestMapping("/addCampaignConsumerErrorPikaQNormal")
+    public ModelAndView addCampaignConsumerErrorPikaQNormal(HttpServletRequest request, HttpServletResponse response) {
+
+        long aa = RandomUtils.nextInt(10000000);
+
+        campaignMgr.createWithConsumerErrorPikaQNormal("campaign" + String.valueOf(aa), BigDecimal.valueOf(aa));
+
+        List<Campaign> campaignList = campaignMgr.findAll();
+
+        return new ModelAndView("index", "campaignList", campaignList);
+    }
+
+    /**
+     * 添加一个订单：使用 原生rabbitmq 消息，有异常:<br/>
+     * 发送消息后，本地事务未能提交，从而导致：扣款了，但是订单未成交
+     *
+     * @param request
+     * @param response
+     *
+     * @return
+     */
+    @RequestMapping("/addCampaignConsumerErrorNormalRabbitMQ")
+    public ModelAndView addCampaignConsumerErrorNormalRabbitMQ(HttpServletRequest request,
+                                                               HttpServletResponse response) {
 
         long aa = RandomUtils.nextInt(10000000);
 
@@ -92,8 +136,8 @@ public class FreeMarkerController {
      *
      * @return
      */
-    @RequestMapping("/updateCampaign")
-    public ModelAndView updateCampaign(HttpServletRequest request, HttpServletResponse response) {
+    @RequestMapping("/updateCampaignPikaQNormal")
+    public ModelAndView updateCampaignPikaQNormal(HttpServletRequest request, HttpServletResponse response) {
 
         campaignMgr.update(1L, BigDecimal.valueOf(343434L));
 

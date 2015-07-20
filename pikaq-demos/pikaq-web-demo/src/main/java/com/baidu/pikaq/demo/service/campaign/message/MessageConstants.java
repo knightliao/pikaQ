@@ -18,7 +18,7 @@ public class MessageConstants {
     /**
      * consumer error
      */
-    public static String ROUTE_KEY_CONSUMER_ERROR = "logMessageInfo.consumer.error";
-    public static String ROUTE_KEY2_CONSUMER_ERROR = "logMessageInfo.consumer.error";
+    public static String ROUTE_KEY_CONSUMER_ERROR = "logMessageInfo.error";
+    public static String ROUTE_KEY2_CONSUMER_ERROR = "logMessageInfo.error2";
 
 }

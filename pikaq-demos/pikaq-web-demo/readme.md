@@ -12,22 +12,23 @@ Q的拓扑图：
 
     pikaQWebDemoExchange -----(logMessageInfo.info)----> pikaQWebDemoLogMessageQueue
     pikaQWebDemoExchange -----(logMessageInfo.info2)----> pikaQWebDemoLogMessageQueue2
+    pikaQWebDemoExchange -----(logMessageInfo.error)----> pikaQWebDemoLogMessageQueueConsumerError 
 
-### 业务场景模拟
+### 业务场景模拟：模拟京东购物扣款行为
 
-#### 模拟京东购物扣款行为
+#### 场景一：上游：提交订单，发送消息后，本地事务发生异常
 
-上游：每隔一段时间就购买订单
+##### 使用原生 rabbitmq : 出错
 
-下游：每隔一段时间就进行扣款
+- http://127.0.0.1:8080/home/addCampaignConsumerErrorNormalRabbitMQ   消息发送成功，但是本地事务未能提交
 
-##### 不使用pikaq的情况
+##### 使用 pikaq 弱一致性 : 正确
 
-- 发送消息后，本地事务未能提交，从而导致：扣款了，但是订单未成交
+- http://127.0.0.1:8080/home/addCampaignConsumerErrorPikaQNormal   未扣款，订单未提交
 
-##### 使用pikaq
+##### 使用 pikaq 强一致性 : 正确
 
-- 发送消息后，本地事务未能提交，保证：未扣款，订单未提交
+- http://127.0.0.1:8080/home/addCampaignConsumerErrorPikaQStrong   未扣款，订单未提交
 
 ### 环境
 

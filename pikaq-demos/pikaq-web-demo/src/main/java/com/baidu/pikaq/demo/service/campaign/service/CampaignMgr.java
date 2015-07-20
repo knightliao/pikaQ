@@ -33,6 +33,22 @@ public interface CampaignMgr {
      *
      * @return
      */
+    Campaign createWithConsumerErrorPikaQStrong(String name, BigDecimal price);
+
+    /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    Campaign createWithConsumerErrorPikaQNormal(String name, BigDecimal price);
+
+    /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
     Campaign createWithConsumerError(String name, BigDecimal price);
 
     /**

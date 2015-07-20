@@ -64,7 +64,51 @@ public class CampaignMgrImpl implements CampaignMgr {
     }
 
     /**
-     * 强一致性的消息生成：生成订单
+     * 强一致性的消息生成
+     *
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+    @Override
+    public Campaign createWithConsumerErrorPikaQStrong(String name, BigDecimal price) {
+
+        // db
+        Campaign campaign = campaignDao.create(name, price);
+
+        // send message
+        pikaQGateway.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
+                             CampaignPikaMessageConverter.convert2PikaMessage(campaign));
+
+        throw new RuntimeException("oh ... something wrong...");
+    }
+
+    /**
+     * 弱一致性的消息生成
+     *
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+    @Override
+    public Campaign createWithConsumerErrorPikaQNormal(String name, BigDecimal price) {
+
+        // db
+        Campaign campaign = campaignDao.create(name, price);
+
+        // send message
+        pikaQGateway.sendSimple(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
+                                   CampaignPikaMessageConverter.convert2PikaMessage(campaign));
+
+        throw new RuntimeException("oh ... something wrong...");
+    }
+
+    /**
+     * 使用原生rabbitmq来做消息生成
      *
      * @return
      */
@@ -76,10 +120,16 @@ public class CampaignMgrImpl implements CampaignMgr {
         Campaign campaign = campaignDao.create(name, price);
 
         // send message
-        pikaQGateway.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
-                             CampaignPikaMessageConverter.convert2PikaMessage(campaign));
+        pikaQGateway
+            .sendWithOriginalRabbitType(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
+                                           CampaignPikaMessageConverter.convert2PikaMessage(campaign));
 
-        return campaign;
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+        }
+
+        throw new RuntimeException("oh ... something wrong...");
     }
 
     /**
@@ -103,4 +153,5 @@ public class CampaignMgrImpl implements CampaignMgr {
                                        CampaignPikaMessageConverter.convert2PikaMessage(campaign));
         }
     }
+
 }

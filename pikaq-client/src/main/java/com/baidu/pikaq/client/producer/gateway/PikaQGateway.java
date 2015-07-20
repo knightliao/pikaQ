@@ -23,12 +23,4 @@ public interface PikaQGateway {
      */
     void sendSimple(String exchange, String routeKey, Object data);
 
-    /**
-     * 使用原生rabbit方式：非常容易导致丢数据
-     *
-     * @param exchange
-     * @param routeKey
-     * @param data
-     */
-    void sendWithOriginalRabbitType(String exchange, String routeKey, Object data);
 }

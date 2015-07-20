@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.baidu.pikaq.client.producer.gateway.PikaQGateway;
+import com.baidu.pikaq.client.producer.gateway.RabbitQGateway;
 import com.baidu.pikaq.demo.service.campaign.bo.Campaign;
 import com.baidu.pikaq.demo.service.campaign.dao.CampaignDao;
 import com.baidu.pikaq.demo.service.campaign.message.CampaignPikaMessageConverter;
@@ -23,6 +24,9 @@ public class CampaignMgrImpl implements CampaignMgr {
 
     @Autowired
     private PikaQGateway pikaQGateway;
+
+    @Autowired
+    private RabbitQGateway rabbitQGateway;
 
     @Autowired
     private CampaignDao campaignDao;
@@ -120,14 +124,8 @@ public class CampaignMgrImpl implements CampaignMgr {
         Campaign campaign = campaignDao.create(name, price);
 
         // send message
-        pikaQGateway
-            .sendWithOriginalRabbitType(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
-                                           CampaignPikaMessageConverter.convert2PikaMessage(campaign));
-
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-        }
+        rabbitQGateway.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
+                               CampaignPikaMessageConverter.convert2PikaMessage(campaign));
 
         throw new RuntimeException("oh ... something wrong...");
     }

@@ -87,34 +87,6 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
     }
 
     /**
-     * @param exchange
-     * @param routeKey
-     * @param data
-     */
-    @Override
-    public void sendWithOriginalRabbitType(String exchange, String routeKey, Object data) {
-
-        //
-        final String correlation;
-        correlation = UUID.randomUUID().toString();
-
-        // exchange
-        getRabbitTemplate().setExchange(exchange);
-        getRabbitTemplate().convertAndSend(routeKey, data, new MessagePostProcessor() {
-
-            public Message postProcessMessage(Message message) throws AmqpException {
-                try {
-                    message.getMessageProperties().setCorrelationId(correlation.getBytes("UTF-8"));
-                } catch (Exception e) {
-                    throw new AmqpException(e);
-                }
-
-                return message;
-            }
-        });
-    }
-
-    /**
      * 发送消息
      *
      * @param exchange

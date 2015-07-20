@@ -39,8 +39,13 @@
         </property>
     </bean>
 
-    <!-- message sender gateway-->
+    <!-- pikaq: message sender gateway-->
     <bean class="com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl">
+        <property name="rabbitTemplate" ref="template"/>
+    </bean>
+
+    <!-- rabbitmq: message sender gateway-->
+    <bean class="com.baidu.pikaq.client.producer.gateway.impl.RabbitQGatewayDefaultImpl">
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 

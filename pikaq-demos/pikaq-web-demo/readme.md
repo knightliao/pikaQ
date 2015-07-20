@@ -1,15 +1,21 @@
 
-操作步骤
+###操作步骤
 
-### 新建数据库
+#### 新建数据库
 
 1. 新建数据库。执行sql: pikaq-web-demo/sql/pikaq-web-demo.sql
 2. 新建pikaq表：执行sql: pikaq-client/sql/pikaq.sql
 
-### 新建 rabbit MQ数据：exchange 和 router-key 、 Queue
+#### 新建 rabbit MQ数据：exchange 和 router-key 、 Queue
 
 Q的拓扑图：
 
     pikaQWebDemoExchange -----(logMessageInfo.info)----> pikaQWebDemoLogMessageQueue
     pikaQWebDemoExchange -----(logMessageInfo.info2)----> pikaQWebDemoLogMessageQueue2
-    
+
+
+### 环境
+
+- java: 1.7
+- spring: 3.1.2.RELEASE
+- spring amqp: 1.4.5.RELEASE

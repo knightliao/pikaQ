@@ -13,20 +13,9 @@
 
 #### 不使用pikaq的情况
 
-有可能出现重复订单的情况，有可能出现重复捐款
+- 发送消息后，本地事务未能提交，从而导致：扣款了，但是订单未成交
 
 #### 使用pikaq
 
-pikaQ保证：不会重复购买订单，不会重复捐款
+- 发送消息后，本地事务未能提交，保证：未扣款，订单未提交
 
-### rabbitmq 帐号
-
-- host:port: 127.0.0.1:5672
-- user: pikaq
-- password: pikaq
-
-### 环境
-
-- java: 1.7
-- spring: 3.1.2.RELEASE
-- spring amqp: 1.4.5.RELEASE

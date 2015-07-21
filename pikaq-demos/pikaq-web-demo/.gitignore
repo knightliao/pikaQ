@@ -1,4 +1,4 @@
-pikajob-web-demo.iml
+*.iml
 /target
 /.project
 /.classpath

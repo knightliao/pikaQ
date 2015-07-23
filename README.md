@@ -1,7 +1,7 @@
 PikaQ
 =======
 
-可靠的消息系统
+分布式可靠消息组件
 
 ![http://ww1.sinaimg.cn/bmiddle/60c9620fjw1eozsd1u8fuj205k06a3z3.jpg](http://ww1.sinaimg.cn/bmiddle/60c9620fjw1eozsd1u8fuj205k06a3z3.jpg)
 

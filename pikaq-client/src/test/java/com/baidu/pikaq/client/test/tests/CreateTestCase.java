@@ -21,9 +21,9 @@ import junit.framework.Assert;
  * Created by knightliao on 15/7/22.
  */
 @Service
-public class CreateTestCase2 extends BaseTestCaseNoRollback {
+public class CreateTestCase extends BaseTestCaseNoRollback {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(CreateTestCase2.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(CreateTestCase.class);
 
     @Autowired
     private CampaignMgr campaignMgr;

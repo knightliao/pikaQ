@@ -1,4 +1,4 @@
-package com.baidu.pikaq.client.test.tests;
+package com.baidu.pikaq.client.test.tests.simpletest;
 
 import java.math.BigDecimal;
 
@@ -31,7 +31,7 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
     private static long RANDOM_DATA = RandomUtils.nextInt(10000000);
 
     /**
-     * 正常处理业务：订单生成，发送消息，
+     * 正常处理业务：订单生成，发送消息，（强一致性）
      * <p/>
      * 测试：数据库存在此条数据，消息也存在
      *

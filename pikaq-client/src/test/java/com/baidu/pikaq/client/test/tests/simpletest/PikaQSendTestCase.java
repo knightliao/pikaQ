@@ -1,4 +1,4 @@
-package com.baidu.pikaq.client.test.tests;
+package com.baidu.pikaq.client.test.tests.simpletest;
 
 import java.math.BigDecimal;
 

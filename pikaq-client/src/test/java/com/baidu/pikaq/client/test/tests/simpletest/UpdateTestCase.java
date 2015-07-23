@@ -1,4 +1,6 @@
-package com.baidu.pikaq.client.test.tests;
+package com.baidu.pikaq.client.test.tests.simpletest;
+
+import java.math.BigDecimal;
 
 import org.apache.commons.lang.math.RandomUtils;
 import org.junit.Test;
@@ -29,7 +31,7 @@ public class UpdateTestCase extends BaseTestCaseNoRollback {
     private static long RANDOM_DATA = RandomUtils.nextInt(10000000);
 
     /**
-     * 正常处理业务：订单生成，发送消息，
+     * 正常处理业务：订单生成，发送消息，（弱一致性校验）
      * <p/>
      * 测试：数据库存在此条数据，消息也存在
      *
@@ -41,7 +43,16 @@ public class UpdateTestCase extends BaseTestCaseNoRollback {
 
         //
         Campaign campaign = campaignMgr.getByName("demo");
+        Assert.assertNotNull(campaign);
         LOGGER.info(campaign.toString());
+
+        //
+        long aa = RandomUtils.nextInt(43434);
+        campaignMgr.update(campaign.getId(), BigDecimal.valueOf(aa));
+
+        // check
+        checkQData(campaign.getName());
+        checkDbData(campaign.getName(), aa);
     }
 
     /**
@@ -67,7 +78,7 @@ public class UpdateTestCase extends BaseTestCaseNoRollback {
     /**
      * check 消息数据库是否数据
      */
-    public void checkDbData(String campaignName) {
+    public void checkDbData(String campaignName, long aa) {
 
         LOGGER.info("checking Db data.......");
         //
@@ -75,7 +86,7 @@ public class UpdateTestCase extends BaseTestCaseNoRollback {
         //
         Campaign campaign = campaignMgr.getByName(campaignName);
         LOGGER.info(campaign.toString());
-        Assert.assertNotNull(campaign);
+        Assert.assertEquals(campaign.getPrice(), BigDecimal.valueOf(aa));
     }
 
 }

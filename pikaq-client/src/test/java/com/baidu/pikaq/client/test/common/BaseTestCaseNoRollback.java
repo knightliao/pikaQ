@@ -1,3 +1,6 @@
+/*
+ * Copyright (C) 2015 Baidu, Inc. All Rights Reserved.
+ */
 package com.baidu.pikaq.client.test.common;
 
 import org.springframework.test.context.ActiveProfiles;
@@ -13,8 +16,8 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
  */
 @TestExecutionListeners(BaseTestBeforeClass.class)
 @ContextConfiguration(locations = "classpath:**/applicationContextClient.xml")
-@TransactionConfiguration(transactionManager = "onedbTransactionManagerTest")
+@TransactionConfiguration(transactionManager = "onedbTransactionManagerTest", defaultRollback = false)
 @ActiveProfiles({"db-test"})
-public class BaseTestCase extends AbstractTestCase {
+public class BaseTestCaseNoRollback extends AbstractTestCase {
 
 }

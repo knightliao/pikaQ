@@ -111,6 +111,16 @@ public class Campaign extends BaseObject<Long> {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Campaign{" +
+                   "price=" + price +
+                   ", name='" + name + '\'' +
+                   ", createTime='" + createTime + '\'' +
+                   ", updateTime='" + updateTime + '\'' +
+                   '}';
+    }
+
     public String getCreateTime() {
         return createTime;
     }

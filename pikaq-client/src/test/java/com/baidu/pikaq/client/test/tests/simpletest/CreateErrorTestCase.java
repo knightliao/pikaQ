@@ -3,11 +3,11 @@ package com.baidu.pikaq.client.test.tests.simpletest;
 import java.math.BigDecimal;
 
 import org.apache.commons.lang.math.RandomUtils;
+import org.junit.After;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.NotTransactional;
 
 import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
@@ -18,32 +18,39 @@ import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
 import junit.framework.Assert;
 
 /**
- * Created by knightliao on 15/7/22.
+ * Created by knightliao on 15/7/27.
  */
-public class CreateTestCase extends BaseTestCaseNoRollback {
+public class CreateErrorTestCase extends BaseTestCaseNoRollback {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(CreateTestCase.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(CreateErrorTestCase.class);
 
     @Autowired
     private CampaignMgr campaignMgr;
 
     private static long RANDOM_DATA = RandomUtils.nextInt(10000000);
 
+    private static String campaignName = "campaign" + String.valueOf(RANDOM_DATA);
+
     /**
-     * 正常处理业务：订单生成，发送消息，（强一致性）
+     * 错误处理业务：订单生成，发送消息，（强一致性）
      * <p/>
-     * 测试：数据库存在此条数据，消息也存在
+     * 测试：数据库无此条数据，消息也不存在
      *
      * @throws Exception
      */
-    @Test
+    @Test(expected = RuntimeException.class)
     @NotTransactional
     public void test() {
 
-        //
-        String campaignName = "campaign" + String.valueOf(RANDOM_DATA);
+        campaignMgr.createWithConsumerErrorPikaQStrong(campaignName, BigDecimal.valueOf(RANDOM_DATA));
 
-        campaignMgr.create(campaignName, BigDecimal.valueOf(RANDOM_DATA));
+    }
+
+    /**
+     * 由于 前面的主逻辑已经 throw 异常了，因此，这里都检测不到任何数据了
+     */
+    @After
+    public void check() {
 
         checkDbData(campaignName);
         checkQData(campaignName);
@@ -60,11 +67,10 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
 
         LOGGER.info("checking Q data.......");
         if (data != null) {
-            Assert.assertTrue(true);
-            LOGGER.info(data.toString());
+            Assert.assertTrue(false);
 
         } else {
-            Assert.assertTrue(false);
+            Assert.assertTrue(true);
         }
 
     }
@@ -79,8 +85,6 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
         // check 数据库有数据
         //
         Campaign campaign = campaignMgr.getByName(campaignName);
-        LOGGER.info(campaign.toString());
-        Assert.assertNotNull(campaign);
+        Assert.assertNull(campaign);
     }
-
 }

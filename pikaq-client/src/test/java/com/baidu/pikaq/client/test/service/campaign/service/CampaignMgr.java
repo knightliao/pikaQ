@@ -32,6 +32,14 @@ public interface CampaignMgr {
      *
      * @return
      */
+    Campaign createWithQErrorPikaQStrong(String name, BigDecimal price);
+
+    /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
     Campaign createWithLocalErrorPikaQStrong(String name, BigDecimal price);
 
     /**

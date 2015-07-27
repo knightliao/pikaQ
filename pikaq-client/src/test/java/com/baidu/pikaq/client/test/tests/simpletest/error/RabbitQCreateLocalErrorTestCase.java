@@ -20,7 +20,7 @@ import junit.framework.Assert;
 /**
  * Created by knightliao on 15/7/27.
  * <p/>
- * 使用 Rabbit，校验在 Q事务异常时，本地是否会回滚
+ * 使用 Rabbit，校验在 本地事务异常时，本地是否会回滚
  */
 public class RabbitQCreateLocalErrorTestCase extends BaseTestCaseNoRollback {
 

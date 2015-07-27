@@ -103,7 +103,17 @@ public class PikaQGatewayDefaultImpl extends RabbitGatewaySupport implements Pik
             @Override
             public void run() {
 
-                sendRabbitQ(routeKey, correlation, data);
+                Long startTime = 0L;
+                try {
+
+                    startTime = System.currentTimeMillis();
+                    sendRabbitQ(routeKey, correlation, data);
+
+                } catch (Exception e) {
+
+                    // 设置为失败
+                    storeResolver.resolve2Failed(correlation, e.toString(), System.currentTimeMillis() - startTime);
+                }
             }
         });
     }

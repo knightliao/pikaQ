@@ -8,4 +8,14 @@ import com.baidu.pikaq.core.db.store.exception.StoreException;
 public interface StoreProducerResolver {
 
     void resolve(String correlation, String data, String exchange, String routerKey) throws StoreException;
+
+    /**
+     * 处理为失败
+     *
+     * @param correlation
+     * @param infoMsg
+     *
+     * @throws StoreException
+     */
+    void resolve2Failed(String correlation, String infoMsg, Long costTime) throws StoreException;
 }

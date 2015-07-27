@@ -15,7 +15,7 @@ public class AfterCommitExecutorDefaultImpl extends CommitExecutorBaseImpl {
     /**
      * Invoked after transaction commit. Can perform further operations right after the main transaction has
      * successfully committed.
-     * 只有事务成功时才会调用, 执行失败 不会回滚了
+     * 只有事务成功时才会调用。 如果本函数 执行失败 不会回滚了
      */
     @Override
     public void afterCommit() {

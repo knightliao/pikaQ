@@ -43,7 +43,7 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
     public boolean isProcessing(String correlation) throws StoreException {
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (null != pikaData) {
-            return pikaData.getStatus().equals(StoreDataStatusEnum.PROCESS.getValue());
+            return pikaData.getStatus().equals(StoreDataStatusEnum.CONSUMER_PROCESS.getValue());
         }
         throw new StoreUserCallbackException("cannot find this message " + correlation);
     }
@@ -59,7 +59,7 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
 
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (null != pikaData) {
-            pikaData.setStatus(StoreDataStatusEnum.PROCESS.getValue());
+            pikaData.setStatus(StoreDataStatusEnum.CONSUMER_PROCESS.getValue());
             pikaDataDao.updateOne(pikaData);
         } else {
 
@@ -79,7 +79,7 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
 
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (pikaData != null) {
-            pikaData.setStatus(StoreDataStatusEnum.SUCCESS.getValue());
+            pikaData.setStatus(StoreDataStatusEnum.CONSUMER_SUCCESS.getValue());
             pikaData.setConsumeTime(costTime);
             pikaData.setInfoMsg(infoMsg);
             pikaDataDao.updateOne(pikaData);
@@ -99,7 +99,7 @@ public class DbStoreConsumerUserCallbackImpl implements DbStoreConsumerUserCallb
 
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
         if (pikaData != null) {
-            pikaData.setStatus(StoreDataStatusEnum.FAILED.getValue());
+            pikaData.setStatus(StoreDataStatusEnum.CONSUMER_FAILED.getValue());
             pikaData.setConsumeTime(costTime);
             pikaData.setInfoMsg(infoMsg);
             pikaDataDao.updateOne(pikaData);

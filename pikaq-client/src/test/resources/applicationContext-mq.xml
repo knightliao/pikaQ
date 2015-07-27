@@ -34,7 +34,13 @@
     </bean>
 
     <!-- pikaq: message sender gateway-->
-    <bean class="com.baidu.pikaq.client.test.mock.PikaQGatewayMockImpl">
+    <bean name="pikaQGatewayMockImpl" class="com.baidu.pikaq.client.test.mock.PikaQGatewayMockImpl">
+        <property name="rabbitTemplate" ref="template"/>
+    </bean>
+
+    <!-- pikaq: message sender gateway-->
+    <bean name="pikaQGatewayWithExceptionMockImpl"
+          class="com.baidu.pikaq.client.test.mock.PikaQGatewayWithExceptionMockImpl">
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 

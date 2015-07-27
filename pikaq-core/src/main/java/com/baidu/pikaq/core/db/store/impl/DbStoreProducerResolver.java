@@ -40,4 +40,38 @@ public class DbStoreProducerResolver implements StoreProducerResolver {
             throw new StoreException(errorMsg);
         }
     }
+
+    /**
+     * 处理为失败
+     *
+     * @param correlation
+     * @param infoMsg
+     * @param costTime
+     *
+     * @throws StoreException
+     */
+    @Override
+    public void resolve2Failed(String correlation, String infoMsg, Long costTime) throws StoreException {
+
+        DbStoreProducerUserCallback dbStoreUserCallback =
+            (DbStoreProducerUserCallback) SpringContextUtil.getBean(DbStoreProducerUserCallback.class);
+
+        if (dbStoreUserCallback != null && correlation != null) {
+
+            LOGGER.debug("pikaq data encounter error: " + infoMsg);
+            dbStoreUserCallback.update2InitFailed(correlation, infoMsg, costTime);
+
+        } else {
+
+            String errorMsg = "";
+            if (dbStoreUserCallback == null) {
+                errorMsg = "dbStoreUserCallback is null";
+            } else {
+                errorMsg = "correlation is null";
+            }
+
+            LOGGER.error("correlation is null");
+            throw new StoreException(errorMsg);
+        }
+    }
 }

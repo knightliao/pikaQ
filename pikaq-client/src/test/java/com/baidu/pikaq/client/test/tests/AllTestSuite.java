@@ -8,11 +8,13 @@ import com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase;
 import com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase;
 import com.baidu.pikaq.client.test.tests.simpletest.PikaQSendTestCase;
 import com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateLocalErrorTestCase;
+import com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase;
 import com.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateLocalErrorTestCase;
 
 @RunWith(Suite.class)
 @SuiteClasses({PikaQCreateTestCase.class, PikaQSendTestCase.class, PIkaQUpdateTestCase.class,
-                  PikaQCreateLocalErrorTestCase.class, RabbitQCreateLocalErrorTestCase.class})
+                  PikaQCreateLocalErrorTestCase.class, RabbitQCreateLocalErrorTestCase.class,
+                  PikaQCreateQErrorTestCase.class})
 public class AllTestSuite {
 
 }

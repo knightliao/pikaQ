@@ -11,15 +11,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.NotTransactional;
 
 import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
+import com.baidu.pikaq.client.test.mock.MockObject;
 import com.baidu.pikaq.client.test.mock.PikaQGatewayMockImpl;
 import com.baidu.pikaq.client.test.service.campaign.bo.Campaign;
 import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
+import com.baidu.pikaq.client.test.service.pikadata.bo.PikaData;
+import com.baidu.pikaq.client.test.service.pikadata.dao.PikaDataDao;
 
 import junit.framework.Assert;
 
 /**
  * Created by knightliao on 15/7/22.
- *
+ * <p/>
  * 使用 PikaQ，弱一致性，校验在 发送时，本地事务和消息是否都已经提交
  */
 @Service
@@ -29,6 +32,9 @@ public class PIkaQUpdateTestCase extends BaseTestCaseNoRollback {
 
     @Autowired
     private CampaignMgr campaignMgr;
+
+    @Autowired
+    private PikaDataDao pikaDataDao;
 
     private static long RANDOM_DATA = RandomUtils.nextInt(10000000);
 
@@ -64,17 +70,29 @@ public class PIkaQUpdateTestCase extends BaseTestCaseNoRollback {
      */
     public void checkQData(String campaignName) {
 
-        Object data = PikaQGatewayMockImpl.consumeOne();
+        MockObject data = PikaQGatewayMockImpl.consumeOne();
 
         LOGGER.info("checking Q data.......");
         if (data != null) {
             Assert.assertTrue(true);
             LOGGER.info(data.toString());
 
+            // check correlation
+            checkPikaData(data.getCorrelation());
         } else {
             Assert.assertTrue(false);
         }
+    }
 
+    /**
+     * 弱一致性，没有 Pikadata
+     *
+     * @param correlation
+     */
+    private void checkPikaData(String correlation) {
+
+        PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
+        Assert.assertNull(pikaData);
     }
 
     /**

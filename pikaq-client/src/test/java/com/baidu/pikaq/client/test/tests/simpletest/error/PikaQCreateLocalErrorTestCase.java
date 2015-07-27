@@ -74,7 +74,6 @@ public class PikaQCreateLocalErrorTestCase extends BaseTestCaseNoRollback {
         } else {
             Assert.assertTrue(true);
         }
-
     }
 
     /**

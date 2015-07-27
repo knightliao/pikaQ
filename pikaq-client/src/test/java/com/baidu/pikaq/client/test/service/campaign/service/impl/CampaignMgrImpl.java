@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,11 @@ import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
 public class CampaignMgrImpl implements CampaignMgr {
 
     @Autowired
+    @Qualifier(value = "pikaQGatewayWithExceptionMockImpl")
+    private PikaQGateway pikaQGatewayWithError;
+
+    @Autowired
+    @Qualifier(value = "pikaQGatewayMockImpl")
     private PikaQGateway pikaQGateway;
 
     @Autowired
@@ -63,6 +69,27 @@ public class CampaignMgrImpl implements CampaignMgr {
         // send message
         pikaQGateway.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.DEFAULT_ROUTE_KEY,
                              CampaignPikaMessageConverter.convert2PikaMessage(campaign));
+
+        return campaign;
+    }
+
+    /**
+     * Q事务回滚：强一致性的消息生成
+     *
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    @Override
+    public Campaign createWithQErrorPikaQStrong(String name, BigDecimal price) {
+
+        // db
+        Campaign campaign = campaignDao.create(name, price);
+
+        // send message
+        pikaQGatewayWithError.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
+                                      CampaignPikaMessageConverter.convert2PikaMessage(campaign));
 
         return campaign;
     }

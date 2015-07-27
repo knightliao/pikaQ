@@ -50,7 +50,7 @@ public class PikaData extends BaseObject<Long> {
      * status
      */
     @Column(value = "status")
-    private Integer status = StoreDataStatusEnum.INIT.getValue();
+    private Integer status = StoreDataStatusEnum.PRODUCE_INIT.getValue();
 
     /**
      * err_msg

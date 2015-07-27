@@ -122,3 +122,113 @@
  2015-07-27 16:33:02,124 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateErrorTestCase - checking Q data.......
  2015-07-27 16:33:02,152 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.RabbitQCreateErrorTestCase - checking Db data.......
  2015-07-27 16:33:02,153 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.RabbitQCreateErrorTestCase - checking Q data.......
+ 2015-07-27 19:35:36,529 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@1bf73879 to run around commit
+ 2015-07-27 19:35:36,540 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@46379135 to run around commit
+ 2015-07-27 19:35:36,541 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCommit, executing 1 runnables
+ 2015-07-27 19:35:36,542 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@1bf73879
+ 2015-07-27 19:35:36,543 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - save pikaq data to db.
+ 2015-07-27 19:35:36,585 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:35:36,586 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:35:36,586 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@46379135
+ 2015-07-27 19:35:36,586 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:35:36,589 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQSendTestCase - MockObject{correlation='377edf6a-f62c-4ffa-b1c7-880c9cb481f4', object=CampaignPikaMessage{price=4147117, name='campaign4147117'}}
+ 2015-07-27 19:35:36,638 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@7a25afbe to run around commit
+ 2015-07-27 19:35:36,638 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@40352198 to run around commit
+ 2015-07-27 19:35:36,638 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCommit, executing 1 runnables
+ 2015-07-27 19:35:36,639 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@7a25afbe
+ 2015-07-27 19:35:36,639 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - save pikaq data to db.
+ 2015-07-27 19:35:36,640 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:35:36,640 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:35:36,640 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@40352198
+ 2015-07-27 19:35:36,641 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:35:36,641 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - checking Db data.......
+ 2015-07-27 19:35:36,652 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - Campaign{price=6530568, name='campaign6530568', createTime='20150727193536', updateTime=''}
+ 2015-07-27 19:35:36,652 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - checking Q data.......
+ 2015-07-27 19:35:36,652 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - MockObject{correlation='64431608-bae8-4115-85df-8afb460c2e62', object=CampaignPikaMessage{price=6530568, name='campaign6530568'}}
+ 2015-07-27 19:35:36,655 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - PikaData{correlation='64431608-bae8-4115-85df-8afb460c2e62', createTime='20150727193536', updateTime='20150727193536', data='{"name":"campaign6530568","price":6530568}', status=0, infoMsg='', consumeTime=0, retryCount=0, exchange='pikaQWebDemoExchange', routerKey='logMessageInfo.info'}
+ 2015-07-27 19:35:36,699 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@194c47bd to run around commit
+ 2015-07-27 19:35:36,699 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@64623b12 to run around commit
+ 2015-07-27 19:35:36,699 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCommit, executing 1 runnables
+ 2015-07-27 19:35:36,700 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@194c47bd
+ 2015-07-27 19:35:36,700 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - save pikaq data to db.
+ 2015-07-27 19:35:36,701 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:35:36,701 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:35:36,701 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@64623b12
+ 2015-07-27 19:35:36,701 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - pikaq data encounter error: java.lang.RuntimeException: oh ... no ... pikaQ throw exception
+ 2015-07-27 19:35:36,705 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:35:36,705 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - checking Db data.......
+ 2015-07-27 19:35:36,707 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - Campaign{price=9297081, name='campaign9297081', createTime='20150727193536', updateTime=''}
+ 2015-07-27 19:35:36,707 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - checking Q data.......
+ 2015-07-27 19:35:36,710 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - PikaData{correlation='97b4c887-5194-4753-9796-354f5f4e32b1', createTime='20150727193536', updateTime='20150727193536', data='{"name":"campaign9297081","price":9297081}', status=1, infoMsg='java.lang.RuntimeException: oh ... no ... pikaQ throw exception', consumeTime=0, retryCount=0, exchange='pikaQWebDemoExchange', routerKey='logMessageInfo.error'}
+ 2015-07-27 19:35:36,720 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - Campaign{price=343434, name='demo', createTime='', updateTime='20150720150835'}
+ 2015-07-27 19:35:36,723 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@675c379d to run around commit
+ 2015-07-27 19:35:36,723 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:35:36,723 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@675c379d
+ 2015-07-27 19:35:36,723 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:35:36,724 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - checking Q data.......
+ 2015-07-27 19:35:36,724 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - MockObject{correlation='706bbb95-e894-43fc-86f9-f76afc5f5bac', object=CampaignPikaMessage{price=19236, name='demo'}}
+ 2015-07-27 19:35:36,725 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - checking Db data.......
+ 2015-07-27 19:35:36,726 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - Campaign{price=19236, name='demo', createTime='', updateTime='20150727193536'}
+ 2015-07-27 19:35:36,752 [main] INFO  c.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateLocalErrorTestCase - checking Db data.......
+ 2015-07-27 19:35:36,753 [main] INFO  c.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateLocalErrorTestCase - checking Q data.......
+ 2015-07-27 19:35:36,779 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@168da839 to run around commit
+ 2015-07-27 19:35:36,779 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@2e1f41c0 to run around commit
+ 2015-07-27 19:35:36,780 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:35:36,780 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status ROLLED_BACK
+ 2015-07-27 19:35:36,780 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateLocalErrorTestCase - checking Db data.......
+ 2015-07-27 19:35:36,781 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateLocalErrorTestCase - checking Q data.......
+ 2015-07-27 19:37:14,417 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@6eaac063 to run around commit
+ 2015-07-27 19:37:14,420 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@ca2394c to run around commit
+ 2015-07-27 19:37:14,420 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCommit, executing 1 runnables
+ 2015-07-27 19:37:14,420 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@6eaac063
+ 2015-07-27 19:37:14,421 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - save pikaq data to db.
+ 2015-07-27 19:37:14,468 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:37:14,468 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:37:14,468 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@ca2394c
+ 2015-07-27 19:37:14,468 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:37:14,471 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQSendTestCase - MockObject{correlation='9c8dbcde-bcfb-4eab-bc10-63943d40043b', object=CampaignPikaMessage{price=7632377, name='campaign7632377'}}
+ 2015-07-27 19:37:14,514 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@d053df8 to run around commit
+ 2015-07-27 19:37:14,515 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@53276b75 to run around commit
+ 2015-07-27 19:37:14,515 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCommit, executing 1 runnables
+ 2015-07-27 19:37:14,515 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@d053df8
+ 2015-07-27 19:37:14,515 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - save pikaq data to db.
+ 2015-07-27 19:37:14,517 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:37:14,518 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:37:14,518 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@53276b75
+ 2015-07-27 19:37:14,519 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:37:14,519 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - checking Db data.......
+ 2015-07-27 19:37:14,530 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - Campaign{price=8802733, name='campaign8802733', createTime='20150727193714', updateTime=''}
+ 2015-07-27 19:37:14,530 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - checking Q data.......
+ 2015-07-27 19:37:14,530 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - MockObject{correlation='05fa5ebc-f533-401e-b344-1eefd97a2dd0', object=CampaignPikaMessage{price=8802733, name='campaign8802733'}}
+ 2015-07-27 19:37:14,533 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase - PikaData{correlation='05fa5ebc-f533-401e-b344-1eefd97a2dd0', createTime='20150727193714', updateTime='20150727193714', data='{"name":"campaign8802733","price":8802733}', status=0, infoMsg='', consumeTime=0, retryCount=0, exchange='pikaQWebDemoExchange', routerKey='logMessageInfo.info'}
+ 2015-07-27 19:37:14,582 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@69c92586 to run around commit
+ 2015-07-27 19:37:14,583 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@74cae0d7 to run around commit
+ 2015-07-27 19:37:14,583 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCommit, executing 1 runnables
+ 2015-07-27 19:37:14,583 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@69c92586
+ 2015-07-27 19:37:14,583 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - save pikaq data to db.
+ 2015-07-27 19:37:14,586 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:37:14,587 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:37:14,587 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@74cae0d7
+ 2015-07-27 19:37:14,587 [main] DEBUG com.baidu.pikaq.core.db.store.impl.DbStoreProducerResolver - pikaq data encounter error: java.lang.RuntimeException: oh ... no ... pikaQ throw exception
+ 2015-07-27 19:37:14,591 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:37:14,591 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - checking Db data.......
+ 2015-07-27 19:37:14,593 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - Campaign{price=4146303, name='campaign4146303', createTime='20150727193714', updateTime=''}
+ 2015-07-27 19:37:14,593 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - checking Q data.......
+ 2015-07-27 19:37:14,595 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateQErrorTestCase - PikaData{correlation='947dff66-a552-4c94-bf6d-54ce8658bfdf', createTime='20150727193714', updateTime='20150727193714', data='{"name":"campaign4146303","price":4146303}', status=1, infoMsg='java.lang.RuntimeException: oh ... no ... pikaQ throw exception', consumeTime=0, retryCount=0, exchange='pikaQWebDemoExchange', routerKey='logMessageInfo.error'}
+ 2015-07-27 19:37:14,603 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - Campaign{price=343434, name='demo', createTime='', updateTime='20150720150835'}
+ 2015-07-27 19:37:14,606 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@350ef493 to run around commit
+ 2015-07-27 19:37:14,607 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction successfully committed, executing 1 runnables
+ 2015-07-27 19:37:14,607 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Executing runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@350ef493
+ 2015-07-27 19:37:14,607 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status COMMITTED
+ 2015-07-27 19:37:14,607 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - checking Q data.......
+ 2015-07-27 19:37:14,607 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - MockObject{correlation='bf428e00-3e66-4dd6-9027-88b2291045fb', object=CampaignPikaMessage{price=37455, name='demo'}}
+ 2015-07-27 19:37:14,609 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - checking Db data.......
+ 2015-07-27 19:37:14,611 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase - Campaign{price=37455, name='demo', createTime='', updateTime='20150727193714'}
+ 2015-07-27 19:37:14,644 [main] INFO  c.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateLocalErrorTestCase - checking Db data.......
+ 2015-07-27 19:37:14,645 [main] INFO  c.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateLocalErrorTestCase - checking Q data.......
+ 2015-07-27 19:37:14,678 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$3@3f412250 to run around commit
+ 2015-07-27 19:37:14,678 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.CommitExecutorBaseImpl - Submitting new runnable com.baidu.pikaq.client.producer.gateway.impl.PikaQGatewayDefaultImpl$1@4d33d2a1 to run around commit
+ 2015-07-27 19:37:14,679 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.BeforeCommitExecutorDefaultImpl - Transaction beforeCompletion
+ 2015-07-27 19:37:14,679 [main] DEBUG com.baidu.pikaq.core.db.commit.executor.AfterCommitExecutorDefaultImpl - Transaction completed with status ROLLED_BACK
+ 2015-07-27 19:37:14,679 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateLocalErrorTestCase - checking Db data.......
+ 2015-07-27 19:37:14,680 [main] INFO  com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateLocalErrorTestCase - checking Q data.......

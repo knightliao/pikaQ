@@ -1,6 +1,3 @@
-/*
- * Copyright (C) 2015 Baidu, Inc. All Rights Reserved.
- */
 package com.baidu.pikaq.demo.origin.producer;
 
 import java.util.Arrays;

@@ -18,6 +18,8 @@ import junit.framework.Assert;
 
 /**
  * Created by knightliao on 15/7/22.
+ * <p/>
+ * 使用 PikaQ，校验在 发送时，本地事务和消息是否都已经提交
  */
 public class PikaQCreateTestCase extends BaseTestCaseNoRollback {
 

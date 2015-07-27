@@ -18,6 +18,8 @@ import junit.framework.Assert;
 
 /**
  * Created by knightliao on 15/7/22.
+ * <p/>
+ * 测试 正常的事务提交、消息发送
  */
 public class PikaQSendTestCase extends BaseTestCaseNoRollback {
 

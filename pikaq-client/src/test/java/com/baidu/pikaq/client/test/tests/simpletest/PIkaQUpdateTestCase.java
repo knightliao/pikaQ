@@ -19,6 +19,8 @@ import junit.framework.Assert;
 
 /**
  * Created by knightliao on 15/7/22.
+ *
+ * 使用 PikaQ，弱一致性，校验在 发送时，本地事务和消息是否都已经提交
  */
 @Service
 public class PIkaQUpdateTestCase extends BaseTestCaseNoRollback {

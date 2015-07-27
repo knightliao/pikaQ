@@ -1,5 +1,6 @@
 package com.baidu.pikaq.client.test.common;
 
+import org.junit.Ignore;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
@@ -15,6 +16,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 @ContextConfiguration(locations = "classpath:**/applicationContextClient.xml")
 @TransactionConfiguration(transactionManager = "onedbTransactionManagerTest")
 @ActiveProfiles({"db-test"})
-public class BaseTestCase extends AbstractTestCase {
+@Ignore
+public abstract class BaseTestCase extends AbstractTestCase {
 
 }

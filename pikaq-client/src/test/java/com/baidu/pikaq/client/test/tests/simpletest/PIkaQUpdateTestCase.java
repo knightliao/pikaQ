@@ -20,9 +20,10 @@ import junit.framework.Assert;
 /**
  * Created by knightliao on 15/7/22.
  */
-public class CreateTestCase extends BaseTestCaseNoRollback {
+@Service
+public class PIkaQUpdateTestCase extends BaseTestCaseNoRollback {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(CreateTestCase.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(PIkaQUpdateTestCase.class);
 
     @Autowired
     private CampaignMgr campaignMgr;
@@ -30,7 +31,7 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
     private static long RANDOM_DATA = RandomUtils.nextInt(10000000);
 
     /**
-     * 正常处理业务：订单生成，发送消息，（强一致性）
+     * 正常处理业务：订单生成，发送消息，（弱一致性校验）
      * <p/>
      * 测试：数据库存在此条数据，消息也存在
      *
@@ -41,12 +42,17 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
     public void test() {
 
         //
-        String campaignName = "campaign" + String.valueOf(RANDOM_DATA);
+        Campaign campaign = campaignMgr.getByName("demo");
+        Assert.assertNotNull(campaign);
+        LOGGER.info(campaign.toString());
 
-        campaignMgr.create(campaignName, BigDecimal.valueOf(RANDOM_DATA));
+        //
+        long aa = RandomUtils.nextInt(43434);
+        campaignMgr.update(campaign.getId(), BigDecimal.valueOf(aa));
 
-        checkDbData(campaignName);
-        checkQData(campaignName);
+        // check
+        checkQData(campaign.getName());
+        checkDbData(campaign.getName(), aa);
     }
 
     /**
@@ -72,7 +78,7 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
     /**
      * check 消息数据库是否数据
      */
-    public void checkDbData(String campaignName) {
+    public void checkDbData(String campaignName, long aa) {
 
         LOGGER.info("checking Db data.......");
         //
@@ -80,7 +86,7 @@ public class CreateTestCase extends BaseTestCaseNoRollback {
         //
         Campaign campaign = campaignMgr.getByName(campaignName);
         LOGGER.info(campaign.toString());
-        Assert.assertNotNull(campaign);
+        Assert.assertEquals(campaign.getPrice(), BigDecimal.valueOf(aa));
     }
 
 }

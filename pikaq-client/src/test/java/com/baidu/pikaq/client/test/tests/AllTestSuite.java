@@ -7,12 +7,12 @@ import org.junit.runners.Suite.SuiteClasses;
 import com.baidu.pikaq.client.test.tests.simpletest.PIkaQUpdateTestCase;
 import com.baidu.pikaq.client.test.tests.simpletest.PikaQCreateTestCase;
 import com.baidu.pikaq.client.test.tests.simpletest.PikaQSendTestCase;
-import com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateErrorTestCase;
-import com.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateErrorTestCase;
+import com.baidu.pikaq.client.test.tests.simpletest.error.PikaQCreateLocalErrorTestCase;
+import com.baidu.pikaq.client.test.tests.simpletest.error.RabbitQCreateLocalErrorTestCase;
 
 @RunWith(Suite.class)
 @SuiteClasses({PikaQCreateTestCase.class, PikaQSendTestCase.class, PIkaQUpdateTestCase.class,
-                  PikaQCreateErrorTestCase.class, RabbitQCreateErrorTestCase.class})
+                  PikaQCreateLocalErrorTestCase.class, RabbitQCreateLocalErrorTestCase.class})
 public class AllTestSuite {
 
 }

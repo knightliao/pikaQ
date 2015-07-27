@@ -15,7 +15,7 @@ import com.baidu.pikaq.client.producer.gateway.impl.RabbitQGatewayDefaultImpl;
 public class RabbitQGatewayMockImpl extends RabbitQGatewayDefaultImpl {
 
     // monitor blocking queue
-    private static BlockingQueue<MockObject> blockingQueue = new LinkedBlockingQueue();
+    protected static BlockingQueue<MockObject> blockingQueue = new LinkedBlockingQueue();
 
     protected final Logger LOGGER = LoggerFactory.getLogger(RabbitQGatewayMockImpl.class);
 

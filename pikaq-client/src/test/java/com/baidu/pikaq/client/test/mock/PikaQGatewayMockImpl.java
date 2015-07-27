@@ -16,14 +16,27 @@ public class PikaQGatewayMockImpl extends PikaQGatewayDefaultImpl {
     protected final Logger LOGGER = LoggerFactory.getLogger(PikaQGatewayMockImpl.class);
 
     // monitor blocking queue
-    private static BlockingQueue<MockObject> blockingQueue = new LinkedBlockingQueue();
+    protected static BlockingQueue<MockObject> blockingQueue = new LinkedBlockingQueue();
 
+    /**
+     * 正常的情况
+     *
+     * @param routeKey
+     * @param correlation
+     * @param data
+     */
+    @Override
     protected void sendRabbitQ(final String routeKey, final String correlation, final Object data) {
         MockObject mockObject = new MockObject(correlation, data);
 
         blockingQueue.add(mockObject);
     }
 
+    /**
+     * 拿数据
+     *
+     * @return
+     */
     public static MockObject consumeOne() {
 
         return blockingQueue.poll();

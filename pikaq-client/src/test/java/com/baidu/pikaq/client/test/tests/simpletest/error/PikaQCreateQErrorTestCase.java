@@ -1,3 +1,6 @@
+/*
+ * Copyright (C) 2015 knightliao, Inc. All Rights Reserved.
+ */
 package com.baidu.pikaq.client.test.tests.simpletest.error;
 
 import java.math.BigDecimal;
@@ -11,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.NotTransactional;
 
 import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
-import com.baidu.pikaq.client.test.mock.RabbitQGatewayMockImpl;
+import com.baidu.pikaq.client.test.mock.PikaQGatewayMockImpl;
 import com.baidu.pikaq.client.test.service.campaign.bo.Campaign;
 import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
 
@@ -20,11 +23,11 @@ import junit.framework.Assert;
 /**
  * Created by knightliao on 15/7/27.
  * <p/>
- * 使用 Rabbit，校验在 事务异常时，消息是否会回滚
+ * 使用 PikaQ，校验在 事务异常时，消息是否会回滚
  */
-public class RabbitQCreateErrorTestCase extends BaseTestCaseNoRollback {
+public class PikaQCreateQErrorTestCase extends BaseTestCaseNoRollback {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(RabbitQCreateErrorTestCase.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(PikaQCreateQErrorTestCase.class);
 
     @Autowired
     private CampaignMgr campaignMgr;
@@ -34,9 +37,9 @@ public class RabbitQCreateErrorTestCase extends BaseTestCaseNoRollback {
     private static String campaignName = "campaign" + String.valueOf(RANDOM_DATA);
 
     /**
-     * Rabbit 错误处理业务：订单生成，发送消息，
+     * 错误处理业务：订单生成，发送消息，（强一致性）
      * <p/>
-     * 测试：数据库无此条数据，但消息有
+     * 测试：数据库无此条数据，消息也不存在
      *
      * @throws Exception
      */
@@ -44,7 +47,7 @@ public class RabbitQCreateErrorTestCase extends BaseTestCaseNoRollback {
     @NotTransactional
     public void test() {
 
-        campaignMgr.createWithConsumerError(campaignName, BigDecimal.valueOf(RANDOM_DATA));
+        campaignMgr.create(campaignName, BigDecimal.valueOf(RANDOM_DATA));
 
     }
 
@@ -65,14 +68,14 @@ public class RabbitQCreateErrorTestCase extends BaseTestCaseNoRollback {
      */
     public void checkQData(String campaignName) {
 
-        Object data = RabbitQGatewayMockImpl.consumeOne();
+        Object data = PikaQGatewayMockImpl.consumeOne();
 
         LOGGER.info("checking Q data.......");
         if (data != null) {
-            Assert.assertTrue(true);
+            Assert.assertTrue(false);
 
         } else {
-            Assert.assertTrue(false);
+            Assert.assertTrue(true);
         }
 
     }

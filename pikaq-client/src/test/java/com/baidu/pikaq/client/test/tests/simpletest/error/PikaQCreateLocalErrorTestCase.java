@@ -20,11 +20,11 @@ import junit.framework.Assert;
 /**
  * Created by knightliao on 15/7/27.
  * <p/>
- * 使用 PikaQ，校验在 事务异常时，消息是否会回滚
+ * 使用 PikaQ，校验在 本地事务异常时，消息是否会回滚
  */
-public class PikaQCreateErrorTestCase extends BaseTestCaseNoRollback {
+public class PikaQCreateLocalErrorTestCase extends BaseTestCaseNoRollback {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(PikaQCreateErrorTestCase.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(PikaQCreateLocalErrorTestCase.class);
 
     @Autowired
     private CampaignMgr campaignMgr;
@@ -44,7 +44,7 @@ public class PikaQCreateErrorTestCase extends BaseTestCaseNoRollback {
     @NotTransactional
     public void test() {
 
-        campaignMgr.createWithConsumerErrorPikaQStrong(campaignName, BigDecimal.valueOf(RANDOM_DATA));
+        campaignMgr.createWithLocalErrorPikaQStrong(campaignName, BigDecimal.valueOf(RANDOM_DATA));
 
     }
 

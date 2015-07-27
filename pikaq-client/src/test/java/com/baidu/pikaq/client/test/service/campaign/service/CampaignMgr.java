@@ -32,7 +32,7 @@ public interface CampaignMgr {
      *
      * @return
      */
-    Campaign createWithConsumerErrorPikaQStrong(String name, BigDecimal price);
+    Campaign createWithLocalErrorPikaQStrong(String name, BigDecimal price);
 
     /**
      * @param name
@@ -40,7 +40,7 @@ public interface CampaignMgr {
      *
      * @return
      */
-    Campaign createWithConsumerErrorPikaQNormal(String name, BigDecimal price);
+    Campaign createWithLocalErrorPikaQNormal(String name, BigDecimal price);
 
     /**
      * @param name
@@ -48,7 +48,7 @@ public interface CampaignMgr {
      *
      * @return
      */
-    Campaign createWithConsumerError(String name, BigDecimal price);
+    Campaign createWithLocalError(String name, BigDecimal price);
 
     /**
      * @param campaignId

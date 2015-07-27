@@ -68,7 +68,7 @@ public class CampaignMgrImpl implements CampaignMgr {
     }
 
     /**
-     * 事务回滚：强一致性的消息生成
+     * 本地事务回滚：强一致性的消息生成
      *
      * @param name
      * @param price
@@ -77,7 +77,7 @@ public class CampaignMgrImpl implements CampaignMgr {
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
     @Override
-    public Campaign createWithConsumerErrorPikaQStrong(String name, BigDecimal price) {
+    public Campaign createWithLocalErrorPikaQStrong(String name, BigDecimal price) {
 
         // db
         Campaign campaign = campaignDao.create(name, price);
@@ -90,7 +90,7 @@ public class CampaignMgrImpl implements CampaignMgr {
     }
 
     /**
-     * 事务回滚：弱一致性的消息生成
+     * 本地事务回滚：弱一致性的消息生成
      *
      * @param name
      * @param price
@@ -99,7 +99,7 @@ public class CampaignMgrImpl implements CampaignMgr {
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
     @Override
-    public Campaign createWithConsumerErrorPikaQNormal(String name, BigDecimal price) {
+    public Campaign createWithLocalErrorPikaQNormal(String name, BigDecimal price) {
 
         // db
         Campaign campaign = campaignDao.create(name, price);
@@ -112,13 +112,13 @@ public class CampaignMgrImpl implements CampaignMgr {
     }
 
     /**
-     * 事务回滚：使用原生rabbitmq来做消息生成
+     * 本地事务回滚：使用原生rabbitmq来做消息生成
      *
      * @return
      */
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
     @Override
-    public Campaign createWithConsumerError(String name, BigDecimal price) {
+    public Campaign createWithLocalError(String name, BigDecimal price) {
 
         // db
         Campaign campaign = campaignDao.create(name, price);

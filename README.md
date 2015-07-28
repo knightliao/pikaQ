@@ -1,4 +1,5 @@
-PikaQ [![Coverage Status](https://coveralls.io/repos/knightliao/pikaq/badge.png?branch=master)]
+PikaQ [![Build Status](https://travis-ci.org/knightliao/pikaQ.svg?branch=master)](https://travis-ci
+.org/knightliao/pikaq) [![Coverage Status](https://coveralls.io/repos/knightliao/pikaq/badge.png?branch=master)]
 (https://coveralls.io/r/knightliao/pikaq?branch=master)
 =======
 

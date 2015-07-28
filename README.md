@@ -1,5 +1,5 @@
 PikaQ [![Build Status](https://travis-ci.org/knightliao/pikaq.svg?branch=master)](https://travis-ci
-.org/knightliao/disconf) [![Coverage Status](https://coveralls.io/repos/knightliao/disconf/badge.png?branch=master)]
+.org/knightliao/disconf) [![Coverage Status](https://coveralls.io/repos/knightliao/pikaq/badge.png?branch=master)]
 (https://coveralls.io/r/knightliao/pikaq?branch=master)
 =======
 

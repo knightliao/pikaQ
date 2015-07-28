@@ -45,7 +45,13 @@
     </bean>
 
     <!-- rabbitmq: message sender gateway-->
-    <bean class="com.baidu.pikaq.client.test.mock.RabbitQGatewayMockImpl">
+    <bean name="rabbitQGatewayMockImpl" class="com.baidu.pikaq.client.test.mock.RabbitQGatewayMockImpl">
+        <property name="rabbitTemplate" ref="template"/>
+    </bean>
+
+    <!-- rabbitmq: message sender gateway-->
+    <bean name="rabbitQGatewayWithExceptionMockImpl"
+          class="com.baidu.pikaq.client.test.mock.RabbitQGatewayWithExceptionMockImpl">
         <property name="rabbitTemplate" ref="template"/>
     </bean>
 

@@ -48,6 +48,14 @@ public interface CampaignMgr {
      *
      * @return
      */
+    Campaign createWithQErrorRabbitQ(String name, BigDecimal price);
+
+    /**
+     * @param name
+     * @param price
+     *
+     * @return
+     */
     Campaign createWithLocalErrorPikaQNormal(String name, BigDecimal price);
 
     /**

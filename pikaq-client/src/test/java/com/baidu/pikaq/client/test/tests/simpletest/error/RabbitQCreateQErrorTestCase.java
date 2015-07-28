@@ -19,18 +19,17 @@ import com.baidu.pikaq.client.test.service.campaign.bo.Campaign;
 import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
 import com.baidu.pikaq.client.test.service.pikadata.bo.PikaData;
 import com.baidu.pikaq.client.test.service.pikadata.dao.PikaDataDao;
-import com.baidu.pikaq.core.db.store.StoreDataStatusEnum;
 
 import junit.framework.Assert;
 
 /**
  * Created by knightliao on 15/7/27.
  * <p/>
- * 使用 PikaQ，校验在 Q事务异常时，是否有保存有 pikadata
+ * 使用 RabbitMq，校验在 Q事务异常时，是否有保存有 pikadata
  */
-public class PikaQCreateQErrorTestCase extends BaseTestCaseNoRollback {
+public class RabbitQCreateQErrorTestCase extends BaseTestCaseNoRollback {
 
-    protected static final Logger LOGGER = LoggerFactory.getLogger(PikaQCreateQErrorTestCase.class);
+    protected static final Logger LOGGER = LoggerFactory.getLogger(RabbitQCreateQErrorTestCase.class);
 
     @Autowired
     private CampaignMgr campaignMgr;
@@ -45,15 +44,15 @@ public class PikaQCreateQErrorTestCase extends BaseTestCaseNoRollback {
     /**
      * 错误处理业务：订单生成，发送消息，（强一致性）
      * <p/>
-     * 测试：数据库有此条数据，消息不存在，但 pika data有未发送的数据
+     * 测试：数据库无此条数据，消息也不存在
      *
      * @throws Exception
      */
-    @Test
+    @Test(expected = RuntimeException.class)
     @NotTransactional
     public void test() {
 
-        campaignMgr.createWithQErrorPikaQStrong(campaignName, BigDecimal.valueOf(RANDOM_DATA));
+        campaignMgr.createWithQErrorRabbitQ(campaignName, BigDecimal.valueOf(RANDOM_DATA));
     }
 
     /**
@@ -88,21 +87,18 @@ public class PikaQCreateQErrorTestCase extends BaseTestCaseNoRollback {
     }
 
     /**
-     * 强一致性，有 Pikadata
+     * 没有 Pikadata
      */
     private void checkPikaData() {
 
         String correlation = PikaQGatewayWithExceptionMockImpl.getPreviousCorrelation();
 
         PikaData pikaData = pikaDataDao.getByCorrelation(correlation);
-        Assert.assertNotNull(pikaData);
-
-        Assert.assertEquals(pikaData.getStatus().intValue(), StoreDataStatusEnum.PRODUCE_INIT_FAILED.getValue());
-        LOGGER.info(pikaData.toString());
+        Assert.assertNull(pikaData);
     }
 
     /**
-     * check 数据库有数据
+     * check 数据库没有数据
      */
     private void checkDbData(String campaignName) {
 
@@ -111,7 +107,6 @@ public class PikaQCreateQErrorTestCase extends BaseTestCaseNoRollback {
         // check 数据库有数据
         //
         Campaign campaign = campaignMgr.getByName(campaignName);
-        LOGGER.info(campaign.toString());
-        Assert.assertNotNull(campaign);
+        Assert.assertNull(campaign);
     }
 }

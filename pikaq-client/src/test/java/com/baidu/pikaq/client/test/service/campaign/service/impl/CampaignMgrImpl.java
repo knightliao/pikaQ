@@ -32,6 +32,11 @@ public class CampaignMgrImpl implements CampaignMgr {
     private PikaQGateway pikaQGateway;
 
     @Autowired
+    @Qualifier(value = "rabbitQGatewayWithExceptionMockImpl")
+    private RabbitQGateway rabbitQGatewayWithError;
+
+    @Autowired
+    @Qualifier(value = "rabbitQGatewayMockImpl")
     private RabbitQGateway rabbitQGateway;
 
     @Autowired
@@ -81,6 +86,7 @@ public class CampaignMgrImpl implements CampaignMgr {
      *
      * @return
      */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
     @Override
     public Campaign createWithQErrorPikaQStrong(String name, BigDecimal price) {
 
@@ -90,6 +96,28 @@ public class CampaignMgrImpl implements CampaignMgr {
         // send message
         pikaQGatewayWithError.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
                                       CampaignPikaMessageConverter.convert2PikaMessage(campaign));
+
+        return campaign;
+    }
+
+    /**
+     * Q事务回滚：RabbitMq
+     *
+     * @param name
+     * @param price
+     *
+     * @return
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = RuntimeException.class)
+    @Override
+    public Campaign createWithQErrorRabbitQ(String name, BigDecimal price) {
+
+        // db
+        Campaign campaign = campaignDao.create(name, price);
+
+        // send message
+        rabbitQGatewayWithError.send(MessageConstants.DEFAULT_EXCHANGE, MessageConstants.ROUTE_KEY_CONSUMER_ERROR,
+                                        CampaignPikaMessageConverter.convert2PikaMessage(campaign));
 
         return campaign;
     }

@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.annotation.NotTransactional;
 
 import com.baidu.pikaq.client.producer.gateway.RabbitQGateway;
@@ -26,6 +27,7 @@ public class PikaQSendTestCase extends BaseTestCaseNoRollback {
     protected final Logger LOGGER = LoggerFactory.getLogger(PikaQSendTestCase.class);
 
     @Autowired
+    @Qualifier(value = "rabbitQGatewayMockImpl")
     private RabbitQGateway rabbitQGateway;
 
     @Autowired

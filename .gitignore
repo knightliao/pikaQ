@@ -5,3 +5,5 @@ pikaq-base.iml
 /.classpath
 /.settings
 log
+*/build
+.gradle

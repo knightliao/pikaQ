@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.annotation.NotTransactional;
+import org.springframework.test.context.transaction.BeforeTransaction;
 
 import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
 import com.baidu.pikaq.client.test.mock.MockObject;
@@ -45,9 +45,11 @@ public class PikaQCreateTestCase extends BaseTestCaseNoRollback {
      * @throws Exception
      */
     @Test
-    @NotTransactional
     public void test() {
+    }
 
+    @BeforeTransaction
+    public void test_() {
         //
         String campaignName = "campaign" + String.valueOf(RANDOM_DATA);
 

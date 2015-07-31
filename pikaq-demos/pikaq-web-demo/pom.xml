@@ -1,27 +1,19 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+    <parent>
+        <artifactId>pikaq-base</artifactId>
+        <groupId>com.baidu.pikaq</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.baidu.pikaq</groupId>
+
     <artifactId>pikaq-web-demo</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>pikaq-web-demo</name>
     <url>http://maven.apache.org</url>
-
-    <properties>
-        <!-- need 1.6 or higher -->
-        <java.version>1.6</java.version>
-        <encoding>UTF-8</encoding>
-        <spring.version>3.1.2.RELEASE</spring.version>
-        <spring.amqp.version>1.4.5.RELEASE</spring.amqp.version>
-        <servlet.version>2.5</servlet.version>
-        <cglib.version>2.2.2</cglib.version>
-        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-        <!-- resource path -->
-        <project.build.online.sourceDir>${project.basedir}/src/main/online-resources</project.build.online.sourceDir>
-        <project.build.offline.sourceDir>${project.basedir}/src/main/resources</project.build.offline.sourceDir>
-    </properties>
 
     <dependencies>
 
@@ -116,24 +108,6 @@
 
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-jms</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-oxm</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
@@ -159,12 +133,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-instrument-tomcat</artifactId>
             <version>${spring.version}</version>
         </dependency>
 

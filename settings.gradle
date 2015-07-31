@@ -3,6 +3,6 @@
  */
 rootProject.name = 'pikaq'
 include ':pikaq-core'
-
+include ':pikaq-client'
 
 

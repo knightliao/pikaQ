@@ -27,6 +27,7 @@ Pikaq [![Build Status](https://travis-ci.org/knightliao/pikaQ.svg?branch=master)
 
 - Java项目(1.6+)
 - Maven管理(3.0.5+)
+- Spring(4.2.0.RELEASE)
 
 pikaQ.git branches and Maven version:
 

@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.test.annotation.NotTransactional;
+import org.springframework.test.context.transaction.BeforeTransaction;
 
 import com.baidu.pikaq.client.producer.gateway.RabbitQGateway;
 import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
@@ -40,9 +40,12 @@ public class PikaQSendTestCase extends BaseTestCaseNoRollback {
      * 测试 正常的事务提交、消息发送
      */
     @Test
-    @NotTransactional
     public void test() {
+    }
 
+    @BeforeTransaction
+    public void test_() {
+        //
         long aa = RandomUtils.nextInt(10000000);
 
         campaignMgr.create("campaign" + String.valueOf(aa), BigDecimal.valueOf(aa));

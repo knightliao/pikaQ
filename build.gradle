@@ -63,72 +63,22 @@ subprojects {
     }
 
     dependencies {
-        compile "org.springframework:spring-core:${springVersion}"
-        compile "org.springframework:spring-beans:${springVersion}"
         compile "org.springframework:spring-context:${springVersion}"
-        compile "org.springframework:spring-context-support:${springVersion}"
-        compile "org.springframework:spring-expression:${springVersion}"
-        compile "org.springframework:spring-aop:${springVersion}"
         compile "org.springframework:spring-jdbc:${springVersion}"
-        compile "org.springframework:spring-orm:${springVersion}"
-        compile "org.springframework:spring-tx:${springVersion}"
-        compile "org.springframework:spring-aspects:${springVersion}"
-        compile "org.springframework.data:spring-data-jpa:${springDataJpaVersion}"
-        compile "org.springframework.data:spring-data-mongodb:${springDataMongodbVersion}"
 
-        compile group: 'cglib', name: 'cglib', version: '2.2.2'
-        compile group: 'c3p0', name: 'c3p0', version: '0.9.1.2'
-        compile group: 'javax.mail', name: 'mail', version: '1.4.7'
-        compile group: 'com.google.code.gson', name: 'gson', version: '2.2.4'
-
-        compile 'commons-beanutils:commons-beanutils:1.8.3'
-        compile 'commons-collections:commons-collections:3.2.1'
-        compile 'commons-dbcp:commons-dbcp:1.4'
-        compile 'commons-digester:commons-digester:1.6'
-        compile 'commons-fileupload:commons-fileupload:1.2.1'
-        compile 'commons-httpclient:commons-httpclient:3.1'
         compile "commons-lang:commons-lang:2.6"
         compile 'commons-io:commons-io:2.4'
-        compile 'commons-net:commons-net:1.4.1'
-        compile 'commons-pool:commons-pool:1.6'
-        compile 'commons-logging:commons-logging:1.0.4'
-
-        compile 'javax.servlet:javax.servlet-api:3.1.0'
-        compile "javax.servlet.jsp:jsp-api:${jspVersion}"
-
-        compile 'org.apache.zookeeper:zookeeper:3.3.6'
-        compile 'mysql:mysql-connector-java:5.1.16'
-        compile 'net.sf.ehcache:ehcache:2.8.0'
-        compile 'org.hibernate:hibernate-validator:4.2.0.Final'
-        compile 'com.google.protobuf:protobuf-java:2.5.0'
-        compile 'net.sf.supercsv:super-csv:2.1.0'
-        compile 'org.ostermiller:utils:1.07.00'
-        compile 'redis.clients:jedis:2.6.0'
 
         compile "org.aspectj:aspectjtools:1.7.4"
-        compile "org.aspectj:aspectjweaver:1.6.11"
         compile "org.aspectj:aspectjrt:1.6.11"
 
-        compile "org.codehaus.jackson:jackson-core-asl:1.9.8"
-        compile "org.codehaus.jackson:jackson-mapper-asl:1.9.8"
+        compile group: 'cglib', name: 'cglib', version: '2.2.2'
 
         compile 'ch.qos.logback:logback-core:1.0.9'
         compile 'ch.qos.logback:logback-classic:1.0.9'
-        compile "log4j:log4j:${log4jVersion}"
-        compile "org.slf4j:slf4j-jdk14:${slf4jVersion}"
-        compile "org.slf4j:slf4j-log4j12:${slf4jVersion}"
+        compile "org.slf4j:slf4j-api:${slf4jVersion}"
 
-        compile 'com.github.knightliao.apollo:apollo:1.0.7'
-
-        testCompile "org.springframework:spring-test:${springVersion}"
-        testCompile "com.github.tomakehurst:wiremock:1.46"
-        testCompile "com.h2database:h2:1.3.174"
-        testCompile "com.googlecode.jmockit:jmockit:1.5"
-        testCompile "com.googlecode.jmockit:jmockit-coverage:0.999.24"
         testCompile "junit:junit:4.12"
-        testCompile("org.mockito:mockito-all:1.10.19") {
-            exclude group: 'org.hamcrest', module: 'hamcrest-core'
-        }
     }
 
     sourceSets {
@@ -174,7 +124,7 @@ subprojects {
 }
 
 project('pikaq-core') {
-    defaultTasks 'clean', 'zip', 'uploadArchives'
+    defaultTasks 'clean', 'uploadArchives'
 }
 
 defaultTasks 'clean', 'jar', 'uploadArchives'

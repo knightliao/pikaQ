@@ -82,7 +82,7 @@ subprojects {
         testCompile "org.springframework:spring-test:${springVersion}"
     }
 
-    apply from: "${parent.projectDir.canonicalPath}/cobertura.gradle"
+    apply from: "${parent.projectDir.canonicalPath}/files/cobertura.gradle"
 
     sourceSets {
         main {

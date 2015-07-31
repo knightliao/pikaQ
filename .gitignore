@@ -9,3 +9,4 @@ log
 .gradle
 old.txt
 old
+/log

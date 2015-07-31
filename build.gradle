@@ -72,14 +72,17 @@ subprojects {
         compile "org.aspectj:aspectjtools:1.7.4"
         compile "org.aspectj:aspectjrt:1.6.11"
 
-        compile group: 'cglib', name: 'cglib', version: '2.2.2'
+        compile "cglib:cglib:${cglibVersion}"
 
         compile 'ch.qos.logback:logback-core:1.0.9'
         compile 'ch.qos.logback:logback-classic:1.0.9'
         compile "org.slf4j:slf4j-api:${slf4jVersion}"
 
-        testCompile "junit:junit:4.12"
+        testCompile "junit:junit:${junitVersion}"
+        testCompile "org.springframework:spring-test:${springVersion}"
     }
+
+    apply from: "${parent.projectDir.canonicalPath}/cobertura.gradle"
 
     sourceSets {
         main {
@@ -124,7 +127,12 @@ subprojects {
 }
 
 project('pikaq-core') {
-    defaultTasks 'clean', 'uploadArchives'
+
+    dependencies {
+        testCompile "org.hsqldb:hsqldb:2.3.1"
+    }
+
+    defaultTasks 'clean', 'test', 'uploadArchives'
 }
 
-defaultTasks 'clean', 'jar', 'uploadArchives'
+defaultTasks 'clean', 'jar', 'test', 'uploadArchives'

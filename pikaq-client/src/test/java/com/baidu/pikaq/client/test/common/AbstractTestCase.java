@@ -28,7 +28,7 @@ public abstract class AbstractTestCase extends AbstractTransactionalJUnit4Spring
      * 业务数据库
      */
     @Autowired
-    @Qualifier(value = "dataSource2")
+    @Qualifier(value = "dataSource")
     public void setDataSource(DataSource dataSource) {
         super.jdbcTemplate = new JdbcTemplate(dataSource);
     }

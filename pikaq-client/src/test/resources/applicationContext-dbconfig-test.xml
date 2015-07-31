@@ -16,7 +16,7 @@
             location="classpath*:/datasource-test.properties"
             ignore-unresolvable="true"/>
 
-    <bean id="dataSource2"
+    <bean name="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${driver_class_name}"/>
         <property name="url" value="${datasource_location}"/>
@@ -24,20 +24,20 @@
         <property name="password" value="{password}"/>
     </bean>
 
-    <jdbc:initialize-database data-source="dataSource2">
+    <jdbc:initialize-database data-source="dataSource">
         <jdbc:script location="classpath:sql/base/schema/1_0_0/pikaq.sql"/>
         <jdbc:script location="classpath:sql/base/goldendata/1_0_0/pikaq.sql"/>
     </jdbc:initialize-database>
 
 
     <bean id="onedbJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource2"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
 
     <!-- Transaction config -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource2"/>
+        <property name="dataSource" ref="dataSource"/>
     </bean>
     <tx:annotation-driven transaction-manager="transactionManager"/>
 

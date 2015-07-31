@@ -44,7 +44,7 @@ subprojects {
     buildscript {
         repositories {
             mavenLocal()
-            maven{ url 'http://maven.oschina.net/content/groups/public/'}
+            maven { url 'http://maven.oschina.net/content/groups/public/' }
             mavenCentral();
             maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
             maven { url 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }
@@ -59,7 +59,7 @@ subprojects {
 
     repositories {
         mavenLocal()
-        maven{ url 'http://maven.oschina.net/content/groups/public/'}
+        maven { url 'http://maven.oschina.net/content/groups/public/' }
         mavenCentral();
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
         maven { url 'https://oss.sonatype.org/service/local/staging/deploy/maven2/' }
@@ -107,11 +107,11 @@ subprojects {
         }
     }
 
- /*   findbugs {
-        toolVersion = "2.0.1"
-        sourceSets = [sourceSets.main]
-        ignoreFailures = true
-    }*/
+    /*   findbugs {
+           toolVersion = "2.0.1"
+           sourceSets = [sourceSets.main]
+           ignoreFailures = true
+       }*/
 
     uploadArchives {
         repositories {
@@ -143,10 +143,10 @@ project('pikaq-client') {
     dependencies {
         compile project(':pikaq-core')
 
-        compile ("org.springframework.amqp:spring-amqp:${springAmqpVersion}"){
+        compile("org.springframework.amqp:spring-amqp:${springAmqpVersion}") {
             exclude group: 'org.springframework', module: 'spring-core'
         }
-        compile ("org.springframework.amqp:spring-rabbit:${springAmqpVersion}"){
+        compile("org.springframework.amqp:spring-rabbit:${springAmqpVersion}") {
             exclude group: 'org.springframework', module: 'spring-core'
             exclude group: 'org.springframework', module: 'spring-messaging'
             exclude group: 'org.springframework', module: 'spring-tx'
@@ -156,7 +156,6 @@ project('pikaq-client') {
         compile "org.springframework:spring-context-support:${springVersion}"
         compile "org.springframework:spring-core:${springVersion}"
         compile "org.springframework:spring-jdbc:${springVersion}"
-        compile "org.springframework:spring-context:${springVersion}"
 
         compile "com.google.guava:guava:14.0"
 

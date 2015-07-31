@@ -4,6 +4,7 @@ import org.junit.Ignore;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestExecutionListeners;
+import org.springframework.test.context.transaction.TransactionConfiguration;
 
 /**
  * 所有测试类的基类
@@ -13,6 +14,7 @@ import org.springframework.test.context.TestExecutionListeners;
  */
 @TestExecutionListeners(BaseTestBeforeClass.class)
 @ContextConfiguration(locations = "classpath:**/applicationContextClient.xml")
+@TransactionConfiguration(transactionManager = "transactionManager")
 @ActiveProfiles({"db-test"})
 @Ignore
 public abstract class BaseTestCase extends AbstractTestCase {

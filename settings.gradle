@@ -1,0 +1,7 @@
+/*
+ * Copyright (C) 2015 knightliao, Inc. All Rights Reserved.
+ */
+rootProject.name = 'pikaq'
+include ':pikaq-core'
+
+

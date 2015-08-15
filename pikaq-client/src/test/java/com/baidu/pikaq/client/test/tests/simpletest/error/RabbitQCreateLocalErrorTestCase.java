@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.transaction.BeforeTransaction;
 
-import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
+import com.baidu.pikaq.client.test.common.BaseTestCase;
 import com.baidu.pikaq.client.test.mock.RabbitQGatewayMockImpl;
 import com.baidu.pikaq.client.test.service.campaign.bo.Campaign;
 import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
@@ -22,7 +22,7 @@ import junit.framework.Assert;
  * <p/>
  * 使用 Rabbit，校验在 本地事务异常时，本地是否会回滚
  */
-public class RabbitQCreateLocalErrorTestCase extends BaseTestCaseNoRollback {
+public class RabbitQCreateLocalErrorTestCase extends BaseTestCase {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(RabbitQCreateLocalErrorTestCase.class);
 

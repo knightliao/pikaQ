@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.transaction.BeforeTransaction;
 
 import com.baidu.pikaq.client.producer.gateway.RabbitQGateway;
-import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
+import com.baidu.pikaq.client.test.common.BaseTestCase;
 import com.baidu.pikaq.client.test.mock.PikaQGatewayMockImpl;
 import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
 
@@ -22,7 +22,7 @@ import junit.framework.Assert;
  * <p/>
  * 测试 正常的事务提交、消息发送
  */
-public class PikaQSendTestCase extends BaseTestCaseNoRollback {
+public class PikaQSendTestCase extends BaseTestCase {
 
     protected final Logger LOGGER = LoggerFactory.getLogger(PikaQSendTestCase.class);
 

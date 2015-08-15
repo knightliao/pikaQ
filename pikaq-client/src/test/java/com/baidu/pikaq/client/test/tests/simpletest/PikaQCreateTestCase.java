@@ -9,7 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.transaction.BeforeTransaction;
 
-import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
+import com.baidu.pikaq.client.test.common.BaseTestCase;
 import com.baidu.pikaq.client.test.mock.MockObject;
 import com.baidu.pikaq.client.test.mock.PikaQGatewayMockImpl;
 import com.baidu.pikaq.client.test.service.campaign.bo.Campaign;
@@ -25,7 +25,7 @@ import junit.framework.Assert;
  * <p/>
  * 使用 PikaQ，校验在 发送时，本地事务和消息是否都已经提交
  */
-public class PikaQCreateTestCase extends BaseTestCaseNoRollback {
+public class PikaQCreateTestCase extends BaseTestCase {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(PikaQCreateTestCase.class);
 

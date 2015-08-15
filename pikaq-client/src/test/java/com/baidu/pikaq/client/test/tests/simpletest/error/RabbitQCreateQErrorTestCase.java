@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.transaction.BeforeTransaction;
 
-import com.baidu.pikaq.client.test.common.BaseTestCaseNoRollback;
+import com.baidu.pikaq.client.test.common.BaseTestCase;
 import com.baidu.pikaq.client.test.mock.PikaQGatewayWithExceptionMockImpl;
 import com.baidu.pikaq.client.test.service.campaign.bo.Campaign;
 import com.baidu.pikaq.client.test.service.campaign.service.CampaignMgr;
@@ -27,7 +27,7 @@ import junit.framework.Assert;
  * <p/>
  * 使用 RabbitMq，校验在 Q事务异常时，是否有保存有 pikadata
  */
-public class RabbitQCreateQErrorTestCase extends BaseTestCaseNoRollback {
+public class RabbitQCreateQErrorTestCase extends BaseTestCase {
 
     protected static final Logger LOGGER = LoggerFactory.getLogger(RabbitQCreateQErrorTestCase.class);
 

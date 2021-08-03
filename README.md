@@ -51,11 +51,3 @@ pikaQ.git branches and Maven version:
 - [Tutorial 2 可靠消息组件使用（下游）](https://github.com/knightliao/pikaQ/wiki/Tutorial2)
 - [Tutorial 3 PikaQ安全机制配置](https://github.com/knightliao/pikaQ/wiki/Tutorial3)
 
-### 联系与赞助作者
-
-[https://github.com/knightliao/pikaQ/wiki/sponsor](https://github.com/knightliao/pikaQ/wiki/sponsor)
-
-### 群·联系·讨论
-
-- java技术QQ群：68373211
-- 我的微信：knightliao
